@@ -1,0 +1,84 @@
+Masked Rotating Bytes
+
+Definition:
+
+Given:
+- an ordered sequence of N bytes
+- a bitmask M applied independently to each byte position
+- a rotation amount R over the byte sequence
+
+A "masked rotate" rotates only the masked bits across the sequence.
+All unmasked bits remain in their original byte positions unchanged.
+
+For each byte i:
+- held[i] = bytes[i] & M
+- bytes[i] = bytes[i] & (~M)
+
+Then rotate the held values across the byte sequence by R positions.
+
+For a right rotation by 1:
+- bytes[0] |= held[N - 1]
+- bytes[1] |= held[0]
+- bytes[2] |= held[1]
+- ...
+- bytes[N - 1] |= held[N - 2]
+
+For a left rotation by 1:
+- bytes[0] |= held[1]
+- bytes[1] |= held[2]
+- ...
+- bytes[N - 2] |= held[N - 1]
+- bytes[N - 1] |= held[0]
+
+General rule:
+- destination byte i receives the masked bits from source byte ((i - R) mod N)
+  when R is defined as a right rotation
+
+Example:
+
+Input bytes:
+- byte1 = 11111111
+- byte2 = 00000000
+
+Mask:
+- M = 10011001
+
+Held values:
+- hold1 = byte1 & M = 10011001
+- hold2 = byte2 & M = 00000000
+
+Unmasked remainder:
+- byte1 = byte1 & ~M = 01100110
+- byte2 = byte2 & ~M = 00000000
+
+Rotate masked bits right by 1 across [byte1, byte2]:
+- byte1 |= hold2  => 01100110
+- byte2 |= hold1  => 10011001
+
+Result:
+- byte1 = 01100110
+- byte2 = 10011001
+
+Important note:
+- The rotation moves masked bit lanes between bytes.
+- It does not shift bits within a byte.
+- It does not alter bits outside the mask.
+
+Naming style
+
+- mVariable = member variable
+- aVariable = local variable
+- gVariable = global / extern
+- pVariable = parameter
+
+Universal cipher length rule
+
+- Every cipher encrypt and decrypt call uses pLength that is a multiple of 192.
+- 192 remains the rule. It is a clean multiple of 48, 32, 24, 16, 12, and 8.
+- Every execution point must fail if pLength % 192 != 0.
+
+Benchmark rule
+
+- Benchmarking is only valid in Release mode.
+- Benchmarking always uses max optimization for the active toolchain.
+- The benchmark script must clean, rebuild Release, then run benchmarks.
