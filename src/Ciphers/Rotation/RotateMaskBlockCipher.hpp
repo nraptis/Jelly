@@ -24,18 +24,18 @@ class RotateMaskBlockCipher final : public LayerCakeCryptDelegate {
       : mMask(pMask), mShift(pShift) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     return Apply(pSource, pDestination, pLength, NormalizeShift(mShift), pMode);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     return Apply(pSource, pDestination, pLength, NormalizeShift(-mShift),
                  pMode);
   }

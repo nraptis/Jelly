@@ -4,6 +4,8 @@
 #include <cstddef>
 #include <cstdint>
 
+#include "Core/MaskedPassword.hpp"
+
 namespace jelly {
 
 // !IMPORTANT: Every cipher entry point must reject any pLength that is not a

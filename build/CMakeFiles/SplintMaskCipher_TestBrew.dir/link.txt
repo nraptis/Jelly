@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/SplintMaskCipher_TestBrew.dir/tests_brew/Ciphers/SplintMaskCipher_TestBrew.cpp.o -o SplintMaskCipher_TestBrew  libtest_brew_support.a

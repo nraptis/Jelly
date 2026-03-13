@@ -2,24 +2,83 @@
 #define JELLY_CORE_LAYER_CAKE_CRYPT_DELEGATE_HPP_
 
 #include <cstddef>
+#include <string>
 
 #include "CryptMode.hpp"
 
 namespace jelly {
 
-class LayerCakeCryptDelegate {
+class Crypt {
  public:
-  virtual ~LayerCakeCryptDelegate() = default;
+  virtual ~Crypt() = default;
   virtual bool SealData(const unsigned char* pSource,
-    const unsigned char* pWorker,
+                        unsigned char* pWorker,
                         unsigned char* pDestination,
                         std::size_t pLength,
-                        CryptMode pMode) = 0;
+                        std::string* pErrorMessage,
+                        CryptMode pMode) const = 0;
   virtual bool UnsealData(const unsigned char* pSource,
-    const unsigned char* pWorker,
+                          unsigned char* pWorker,
                           unsigned char* pDestination,
                           std::size_t pLength,
-                          CryptMode pMode) = 0;
+                          std::string* pErrorMessage,
+                          CryptMode pMode) const = 0;
+
+  bool SealData(const unsigned char* pSource,
+                unsigned char* pWorker,
+                unsigned char* pDestination,
+                std::size_t pLength,
+                CryptMode pMode) const {
+    return SealData(pSource, pWorker, pDestination, pLength, nullptr, pMode);
+  }
+
+  bool UnsealData(const unsigned char* pSource,
+                  unsigned char* pWorker,
+                  unsigned char* pDestination,
+                  std::size_t pLength,
+                  CryptMode pMode) const {
+    return UnsealData(pSource, pWorker, pDestination, pLength, nullptr, pMode);
+  }
+};
+
+class LayerCakeCryptDelegate : public Crypt {
+ public:
+  ~LayerCakeCryptDelegate() override = default;
+
+  bool SealData(const unsigned char* pSource,
+                unsigned char* pWorker,
+                unsigned char* pDestination,
+                std::size_t pLength,
+                std::string* pErrorMessage,
+                CryptMode pMode) const final {
+    if (pErrorMessage != nullptr) {
+      pErrorMessage->clear();
+    }
+    return SealData(pSource, pWorker, pDestination, pLength, pMode);
+  }
+
+  bool UnsealData(const unsigned char* pSource,
+                  unsigned char* pWorker,
+                  unsigned char* pDestination,
+                  std::size_t pLength,
+                  std::string* pErrorMessage,
+                  CryptMode pMode) const final {
+    if (pErrorMessage != nullptr) {
+      pErrorMessage->clear();
+    }
+    return UnsealData(pSource, pWorker, pDestination, pLength, pMode);
+  }
+
+  virtual bool SealData(const unsigned char* pSource,
+                        unsigned char* pWorker,
+                        unsigned char* pDestination,
+                        std::size_t pLength,
+                        CryptMode pMode) const = 0;
+  virtual bool UnsealData(const unsigned char* pSource,
+                          unsigned char* pWorker,
+                          unsigned char* pDestination,
+                          std::size_t pLength,
+                          CryptMode pMode) const = 0;
 };
 
 }  // namespace jelly

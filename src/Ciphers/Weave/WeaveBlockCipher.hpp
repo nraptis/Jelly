@@ -23,19 +23,19 @@ class WeaveBlockCipher final : public LayerCakeCryptDelegate {
         mBackStride(pBackStride) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength);
   }
@@ -62,8 +62,7 @@ class WeaveBlockCipher final : public LayerCakeCryptDelegate {
 
     const std::size_t aFullBlockCount = pLength / mBlockSize;
     const std::size_t aTailOffset = aFullBlockCount * mBlockSize;
-    const std::vector<std::size_t> aMap =
-        BuildMap(aFullBlockCount, mCount, mFrontStride, mBackStride);
+    const std::vector<std::size_t>& aMap = GetMap(aFullBlockCount);
 
     for (std::size_t aBlockIndex = 0; aBlockIndex < aFullBlockCount;
          ++aBlockIndex) {
@@ -73,6 +72,14 @@ class WeaveBlockCipher final : public LayerCakeCryptDelegate {
     std::memcpy(pDestination + aTailOffset, pSource + aTailOffset,
                 pLength - aTailOffset);
     return true;
+  }
+
+  const std::vector<std::size_t>& GetMap(std::size_t pBlockCount) const {
+    if (mCachedMapBlockCount != pBlockCount) {
+      mCachedMap = BuildMap(pBlockCount, mCount, mFrontStride, mBackStride);
+      mCachedMapBlockCount = pBlockCount;
+    }
+    return mCachedMap;
   }
 
   static std::size_t ClampPositiveCount(int pValue) {
@@ -134,6 +141,8 @@ class WeaveBlockCipher final : public LayerCakeCryptDelegate {
   int mCount;
   int mFrontStride;
   int mBackStride;
+  mutable std::size_t mCachedMapBlockCount = static_cast<std::size_t>(-1);
+  mutable std::vector<std::size_t> mCachedMap;
 };
 
 }  // namespace jelly

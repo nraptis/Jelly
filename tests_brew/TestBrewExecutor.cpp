@@ -119,7 +119,7 @@ bool RunRoundTripCase(const CipherFactory& pFactory,
     return false;
   }
   for (CryptMode aMode : GetAvailableCryptModes()) {
-    std::unique_ptr<LayerCakeCryptDelegate> aCipher = pFactory(pCaseIndex, aMode);
+    std::unique_ptr<Crypt> aCipher = pFactory(pCaseIndex, aMode);
     if (!aCipher) {
       SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
                           " failed in " + pBucket + " at case " +
@@ -135,23 +135,27 @@ bool RunRoundTripCase(const CipherFactory& pFactory,
     unsigned char aEncryptedDummy = 0;
     unsigned char aRoundTripDummy = 0;
 
+    std::string aCipherError;
     if (!aCipher->SealData(ReadPtr(pInput, &aInputDummy),
-                           ReadPtr(aWorker, &aWorkerDummy),
+                           WritePtr(aWorker, &aWorkerDummy),
                            WritePtr(aEncrypted, &aEncryptedDummy),
-                           pInput.size(), aMode)) {
+                           pInput.size(), &aCipherError, aMode)) {
       SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
                           " failed in " + pBucket + " at case " +
-                          std::to_string(pCaseIndex) + " during encrypt");
+                          std::to_string(pCaseIndex) + " during encrypt" +
+                          (aCipherError.empty() ? "" : ": " + aCipherError));
       return false;
     }
 
+    aCipherError.clear();
     if (!aCipher->UnsealData(ReadPtr(aEncrypted, &aEncryptedDummy),
-                             ReadPtr(aWorker, &aWorkerDummy),
+                             WritePtr(aWorker, &aWorkerDummy),
                              WritePtr(aRoundTrip, &aRoundTripDummy),
-                             aEncrypted.size(), aMode)) {
+                             aEncrypted.size(), &aCipherError, aMode)) {
       SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
                           " failed in " + pBucket + " at case " +
-                          std::to_string(pCaseIndex) + " during decrypt");
+                          std::to_string(pCaseIndex) + " during decrypt" +
+                          (aCipherError.empty() ? "" : ": " + aCipherError));
       return false;
     }
 
@@ -181,7 +185,7 @@ bool RunRoundTripCase(const BlockCipherFactory& pFactory,
     return false;
   }
   for (CryptMode aMode : GetAvailableCryptModes()) {
-    std::unique_ptr<LayerCakeCryptDelegate> aCipher =
+    std::unique_ptr<Crypt> aCipher =
         pFactory(pBlockSize, pCaseIndex, aMode);
     if (!aCipher) {
       SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
@@ -199,25 +203,29 @@ bool RunRoundTripCase(const BlockCipherFactory& pFactory,
     unsigned char aEncryptedDummy = 0;
     unsigned char aRoundTripDummy = 0;
 
+    std::string aCipherError;
     if (!aCipher->SealData(ReadPtr(pInput, &aInputDummy),
-                           ReadPtr(aWorker, &aWorkerDummy),
+                           WritePtr(aWorker, &aWorkerDummy),
                            WritePtr(aEncrypted, &aEncryptedDummy),
-                           pInput.size(), aMode)) {
+                           pInput.size(), &aCipherError, aMode)) {
       SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
                           " block_size=" + std::to_string(pBlockSize) +
                           " failed in " + pBucket + " at case " +
-                          std::to_string(pCaseIndex) + " during encrypt");
+                          std::to_string(pCaseIndex) + " during encrypt" +
+                          (aCipherError.empty() ? "" : ": " + aCipherError));
       return false;
     }
 
+    aCipherError.clear();
     if (!aCipher->UnsealData(ReadPtr(aEncrypted, &aEncryptedDummy),
-                             ReadPtr(aWorker, &aWorkerDummy),
+                             WritePtr(aWorker, &aWorkerDummy),
                              WritePtr(aRoundTrip, &aRoundTripDummy),
-                             aEncrypted.size(), aMode)) {
+                             aEncrypted.size(), &aCipherError, aMode)) {
       SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
                           " block_size=" + std::to_string(pBlockSize) +
                           " failed in " + pBucket + " at case " +
-                          std::to_string(pCaseIndex) + " during decrypt");
+                          std::to_string(pCaseIndex) + " during decrypt" +
+                          (aCipherError.empty() ? "" : ": " + aCipherError));
       return false;
     }
 

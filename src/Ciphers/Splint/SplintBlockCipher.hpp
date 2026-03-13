@@ -14,10 +14,10 @@ class SplintBlockCipher final : public LayerCakeCryptDelegate {
   explicit SplintBlockCipher(std::size_t pBlockSize) : mBlockSize(pBlockSize) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     (void)pMode;
     if (!ValidateInputs(pSource, pDestination, pLength)) {
       return false;
@@ -27,10 +27,10 @@ class SplintBlockCipher final : public LayerCakeCryptDelegate {
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     (void)pMode;
     if (!ValidateInputs(pSource, pDestination, pLength)) {
       return false;

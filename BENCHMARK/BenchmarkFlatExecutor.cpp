@@ -129,7 +129,7 @@ bool TimeMode(const CipherFactory& pFactory,
   std::vector<double> aTimes;
   aTimes.reserve(RUN_COUNT);
 
-  std::unique_ptr<LayerCakeCryptDelegate> aCipher = pFactory(0, pMode);
+  std::unique_ptr<Crypt> aCipher = pFactory(0, pMode);
   if (!aCipher) {
     SetError(pError,
              std::string("cipher factory returned null for mode ") +
@@ -139,11 +139,14 @@ bool TimeMode(const CipherFactory& pFactory,
 
   for (int aRun = 0; aRun < RUN_COUNT; ++aRun) {
     const auto aStart = std::chrono::steady_clock::now();
+    std::string aCipherError;
     if (!aCipher->SealData(pBuffers.mSource, pBuffers.mWorker,
-                           pBuffers.mDestination, pDataLength, pMode)) {
+                           pBuffers.mDestination, pDataLength,
+                           &aCipherError, pMode)) {
       SetError(pError,
                std::string("SealData failed for mode ") +
-                   GetCryptModeName(pMode));
+                   GetCryptModeName(pMode) +
+                   (aCipherError.empty() ? "" : ": " + aCipherError));
       return false;
     }
     const auto aEnd = std::chrono::steady_clock::now();

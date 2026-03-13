@@ -18,19 +18,19 @@ class WeaveCipher final : public LayerCakeCryptDelegate {
         mBackStride(pBackStride) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength);
   }
@@ -52,12 +52,19 @@ class WeaveCipher final : public LayerCakeCryptDelegate {
       return false;
     }
 
-    const std::vector<std::size_t> aMap =
-        BuildMap(pLength, mCount, mFrontStride, mBackStride);
+    const std::vector<std::size_t>& aMap = GetMap(pLength);
     for (std::size_t aIndex = 0; aIndex < pLength; ++aIndex) {
       pDestination[aIndex] = pSource[aMap[aIndex]];
     }
     return true;
+  }
+
+  const std::vector<std::size_t>& GetMap(std::size_t pLength) const {
+    if (mCachedMapLength != pLength) {
+      mCachedMap = BuildMap(pLength, mCount, mFrontStride, mBackStride);
+      mCachedMapLength = pLength;
+    }
+    return mCachedMap;
   }
 
   static std::size_t ClampPositiveCount(int pValue) {
@@ -118,6 +125,8 @@ class WeaveCipher final : public LayerCakeCryptDelegate {
   int mCount;
   int mFrontStride;
   int mBackStride;
+  mutable std::size_t mCachedMapLength = static_cast<std::size_t>(-1);
+  mutable std::vector<std::size_t> mCachedMap;
 };
 
 }  // namespace jelly

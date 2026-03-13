@@ -14,19 +14,19 @@ class RotateCipher final : public LayerCakeCryptDelegate {
   explicit RotateCipher(int pShift) : mShift(pShift) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength, -mShift);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength, mShift);
   }

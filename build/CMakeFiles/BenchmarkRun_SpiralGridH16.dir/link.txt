@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/BenchmarkRun_SpiralGridH16.dir/BENCHMARK/BenchmarkRun_SpiralGridH16.cpp.o -o BenchmarkRun_SpiralGridH16  libbenchmark_support.a

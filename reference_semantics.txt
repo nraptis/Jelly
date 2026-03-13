@@ -1,5 +1,163 @@
 Reference Semantics
 
+Family mask rule
+
+- Non-masked modes move full bytes by the family index rule.
+- Masked modes use the same index rule, but only move masked bits.
+- For every destination byte:
+- result = (source_byte & ~mask) | (moved_byte & mask)
+
+Cipher family map
+
+Reverse family files
+- /Reverse/ReverseCipher.hpp
+- /Reverse/ReverseBlockCipher.hpp
+- /Reverse/ReverseBlockByteCipher.hpp
+- /Reverse/ReverseMaskCipher.hpp
+- /Reverse/ReverseMaskBlockCipher.hpp
+- /Reverse/ReverseMaskByteBlockCipher.hpp
+
+Reverse meaning
+- Reverse changes order by reading from the other end of a region.
+- It is symmetric by design: applying again restores original order.
+
+Reverse forms
+- base: Reverse complete byte order once; first becomes last, with symmetry.
+- block: Reverse order of whole blocks; bytes inside each block stay.
+- block byte: Within each block, reverse byte order; keep block positions unchanged.
+
+Rotation family files
+- /Rotation/RotateCipher.hpp
+- /Rotation/RotateBlockCipher.hpp
+- /Rotation/RotateBlockByteCipher.hpp
+- /Rotation/RotateMaskCipher.hpp
+- /Rotation/RotateMaskBlockCipher.hpp
+- /Rotation/RotateMaskByteBlockCipher.hpp
+
+Rotation meaning
+- Rotation shifts positions by a signed amount and wraps at edges.
+- The active region defines where wrap happens: full data or block window.
+
+Rotation forms
+- base: Rotate whole byte region by shift amount; wrapped indices preserve size.
+- block: Rotate block positions across region; each block contents move together.
+- block byte: Rotate bytes inside every block; block positions remain fixed globally.
+
+Splint family files
+- /Splint/SplintCipher.hpp
+- /Splint/SplintBlockCipher.hpp
+- /Splint/SplintByteBlockCipher.hpp
+- /Splint/SplintMaskCipher.hpp
+- /Splint/SplintMaskBlockCipher.hpp
+- /Splint/SplintMaskByteBlockCipher.hpp
+
+Splint meaning
+- Splint divides data into front and back spans, then interleaves them.
+- It is a deterministic split-merge shuffle over bytes or blocks.
+
+Splint forms
+- base: Interleave front and back byte halves into alternating output sequence.
+- block: Interleave front and back block halves into alternating block stream.
+- block byte: Per block, interleave front and back byte halves locally.
+
+Weave family files
+- /Weave/WeaveCipher.hpp
+- /Weave/WeaveBlockCipher.hpp
+- /Weave/WeaveByteBlockCipher.hpp
+- /Weave/WeaveMaskCipher.hpp
+- /Weave/WeaveMaskBlockCipher.hpp
+- /Weave/WeaveMaskByteBlockCipher.hpp
+
+Weave meaning
+- Weave walks from front and back, swapping by count and stride controls.
+- It creates sparse crossing exchanges instead of full contiguous permutations.
+
+Weave forms
+- base: Swap front/back byte positions repeatedly using count and stride steps.
+- block: Swap front/back blocks repeatedly using count and stride block steps.
+- block byte: Inside each block, weave bytes with local front/back stride swaps.
+
+Ripple family files
+
+- /Ripple/RippleCipher.hpp
+- /Ripple/RippleBlockCipher.hpp
+- /Ripple/RippleMaskCipher.hpp
+- /Ripple/RippleMaskBlockCipher.hpp
+
+Ripple meaning
+- Ripple runs neighbor swaps in passes, like odd-even transposition waves.
+- More passes increase mixing while keeping operations very cache friendly.
+
+Ripple forms
+- base: Swap adjacent bytes in repeating passes; odd and even phases.
+- block: Swap adjacent blocks in repeating passes; odd and even phases.
+
+Proposed new behavior: Jump
+
+Jump meaning
+- Jump permutes by stepping through indices with a fixed stride K.
+- Choose K coprime with region length to get a full-cycle walk.
+
+Jump forms
+- base: Reorder bytes by fixed stride walk over full index cycle.
+- block: Reorder blocks by fixed stride walk over block index cycle.
+- block byte: Per block, reorder bytes by fixed stride local index walk.
+
+SwapGrid family files
+
+- /SwapGrid/SwapGridVV16.hpp
+- /SwapGrid/SwapGridVH16.hpp
+- /SwapGrid/SwapGridHV16.hpp
+- /SwapGrid/SwapGridHH16.hpp
+- /SwapGrid/SwapGridVV64.hpp
+- /SwapGrid/SwapGridVH64.hpp
+- /SwapGrid/SwapGridHV64.hpp
+- /SwapGrid/SwapGridHH64.hpp
+
+SwapGrid meaning
+- SwapGrid rolls bytes into a square tile, runs pair swaps, then unrolls.
+- Tile size is fixed by variant: 16 bytes (4x4) or 64 bytes (8x8).
+
+SwapGrid variants
+- naming: SwapGrid[swap][unroll][size]
+- first letter (swap): V = swap row pairs, H = swap column pairs
+- second letter (unroll): H = row-major output, V = column-major output
+- size: 16 or 64 tile bytes
+
+SwapGrid class set
+- SwapGridVV16, SwapGridVH16, SwapGridHV16, SwapGridHH16
+- SwapGridVV64, SwapGridVH64, SwapGridHV64, SwapGridHH64
+
+SpiralGrid family files
+
+- /SpiralGrid/SpiralGridH16.hpp
+- /SpiralGrid/SpiralGridV16.hpp
+- /SpiralGrid/SpiralGridH64.hpp
+- /SpiralGrid/SpiralGridV64.hpp
+
+SpiralGrid meaning
+- SpiralGrid rotates each ring of a square tile by pAmount.
+- Unseal uses the same operation with -pAmount.
+
+SpiralGrid variants
+- naming: SpiralGrid[unroll][size]
+- unroll H: row-major ring indexing
+- unroll V: column-major ring indexing
+- size: 16 or 64 tile bytes
+
+Invert family files
+
+- /Invert/InvertCipher.hpp
+- /Invert/InvertMaskCipher.hpp
+
+Invert meaning
+- Invert flips bits in place, no index movement.
+- It is symmetric by design: applying again restores original bytes.
+
+Invert forms
+- base: Invert every bit in every byte.
+- mask: Invert only masked bits; keep unmasked bits unchanged.
+
 Common rules
 
 - Data is an ordered byte list.

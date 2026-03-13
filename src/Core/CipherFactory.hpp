@@ -11,12 +11,12 @@
 namespace jelly {
 
 using CipherFactory =
-    std::function<std::unique_ptr<LayerCakeCryptDelegate>(
+    std::function<std::unique_ptr<Crypt>(
         std::size_t pCaseIndex,
         CryptMode pMode)>;
 
 using BlockCipherFactory =
-    std::function<std::unique_ptr<LayerCakeCryptDelegate>(
+    std::function<std::unique_ptr<Crypt>(
         int pBlockSize,
         std::size_t pCaseIndex,
         CryptMode pMode)>;

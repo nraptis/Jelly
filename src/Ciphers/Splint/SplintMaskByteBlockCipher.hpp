@@ -23,10 +23,10 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
       : mBlockSize(pBlockSize), mMask(pMask) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     if (!ValidateInputs(pSource, pWorker, pDestination, pLength)) {
       return false;
     }
@@ -51,10 +51,10 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     if (!ValidateInputs(pSource, pWorker, pDestination, pLength)) {
       return false;
     }
@@ -80,7 +80,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
 
  private:
   bool ValidateInputs(const unsigned char* pSource,
-                      const unsigned char* pWorker,
+                      unsigned char* pWorker,
                       unsigned char* pDestination,
                       std::size_t pLength) const {
     if (mBlockSize == 0) {
@@ -105,7 +105,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
   }
 
   bool ApplyEncryptSoftware(const unsigned char* pSource,
-                            const unsigned char* pWorker,
+                            unsigned char* pWorker,
                             unsigned char* pDestination,
                             std::size_t pLength) const {
     unsigned char* aWorker = const_cast<unsigned char*>(pWorker);
@@ -116,7 +116,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
   }
 
   bool ApplyDecryptSoftware(const unsigned char* pSource,
-                            const unsigned char* pWorker,
+                            unsigned char* pWorker,
                             unsigned char* pDestination,
                             std::size_t pLength) const {
     unsigned char* aWorker = const_cast<unsigned char*>(pWorker);
@@ -128,7 +128,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
 
 #if defined(__SSSE3__) || defined(__AVX2__)
   bool ApplyEncryptSimd(const unsigned char* pSource,
-                        const unsigned char* pWorker,
+                        unsigned char* pWorker,
                         unsigned char* pDestination,
                         std::size_t pLength) const {
     unsigned char* aWorker = const_cast<unsigned char*>(pWorker);
@@ -139,7 +139,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
   }
 
   bool ApplyDecryptSimd(const unsigned char* pSource,
-                        const unsigned char* pWorker,
+                        unsigned char* pWorker,
                         unsigned char* pDestination,
                         std::size_t pLength) const {
     unsigned char* aWorker = const_cast<unsigned char*>(pWorker);
@@ -152,7 +152,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
 
 #if defined(__ARM_NEON) || defined(__ARM_NEON__)
   bool ApplyEncryptNeon(const unsigned char* pSource,
-                        const unsigned char* pWorker,
+                        unsigned char* pWorker,
                         unsigned char* pDestination,
                         std::size_t pLength) const {
     unsigned char* aWorker = const_cast<unsigned char*>(pWorker);
@@ -163,7 +163,7 @@ class SplintMaskByteBlockCipher final : public LayerCakeCryptDelegate {
   }
 
   bool ApplyDecryptNeon(const unsigned char* pSource,
-                        const unsigned char* pWorker,
+                        unsigned char* pWorker,
                         unsigned char* pDestination,
                         std::size_t pLength) const {
     unsigned char* aWorker = const_cast<unsigned char*>(pWorker);

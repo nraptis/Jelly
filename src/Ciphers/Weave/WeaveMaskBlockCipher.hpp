@@ -34,18 +34,18 @@ class WeaveMaskBlockCipher final : public LayerCakeCryptDelegate {
         mBackStride(pBackStride) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     return Apply(pSource, pDestination, pLength, pMode);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     return Apply(pSource, pDestination, pLength, pMode);
   }
 
@@ -70,10 +70,9 @@ class WeaveMaskBlockCipher final : public LayerCakeCryptDelegate {
       return false;
     }
 
-    std::memcpy(pDestination, pSource, pLength);
     const std::size_t aFullBlockCount = pLength / mBlockSize;
-    const std::vector<std::size_t> aMap =
-        BuildMap(aFullBlockCount, mCount, mFrontStride, mBackStride);
+    const std::size_t aTailOffset = aFullBlockCount * mBlockSize;
+    const std::vector<std::size_t>& aMap = GetMap(aFullBlockCount);
 
     for (std::size_t aBlockIndex = 0; aBlockIndex < aFullBlockCount;
          ++aBlockIndex) {
@@ -81,7 +80,19 @@ class WeaveMaskBlockCipher final : public LayerCakeCryptDelegate {
                   pSource + (aMap[aBlockIndex] * mBlockSize),
                   pDestination + (aBlockIndex * mBlockSize), mBlockSize, pMode);
     }
+    if (aTailOffset < pLength) {
+      std::memcpy(pDestination + aTailOffset, pSource + aTailOffset,
+                  pLength - aTailOffset);
+    }
     return true;
+  }
+
+  const std::vector<std::size_t>& GetMap(std::size_t pBlockCount) const {
+    if (mCachedMapBlockCount != pBlockCount) {
+      mCachedMap = BuildMap(pBlockCount, mCount, mFrontStride, mBackStride);
+      mCachedMapBlockCount = pBlockCount;
+    }
+    return mCachedMap;
   }
 
   void BlendMasked(const unsigned char* pBaseSource,
@@ -248,6 +259,8 @@ class WeaveMaskBlockCipher final : public LayerCakeCryptDelegate {
   int mCount;
   int mFrontStride;
   int mBackStride;
+  mutable std::size_t mCachedMapBlockCount = static_cast<std::size_t>(-1);
+  mutable std::vector<std::size_t> mCachedMap;
 };
 
 }  // namespace jelly

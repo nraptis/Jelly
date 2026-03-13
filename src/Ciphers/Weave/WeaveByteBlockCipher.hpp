@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <cstring>
 #include <vector>
 
 #include "../../Core/LayerCakeCryptDelegate.hpp"
@@ -22,19 +23,19 @@ class WeaveByteBlockCipher final : public LayerCakeCryptDelegate {
         mBackStride(pBackStride) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
+                CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
+                  CryptMode pMode) const override {
     (void)pMode;
     return Apply(pSource, pDestination, pLength);
   }
@@ -59,15 +60,33 @@ class WeaveByteBlockCipher final : public LayerCakeCryptDelegate {
       return false;
     }
 
-    for (std::size_t aOffset = 0; aOffset < pLength; aOffset += mBlockSize) {
-      const std::size_t aSpan = std::min(mBlockSize, pLength - aOffset);
-      const std::vector<std::size_t> aMap =
-          BuildMap(aSpan, mCount, mFrontStride, mBackStride);
-      for (std::size_t aIndex = 0; aIndex < aSpan; ++aIndex) {
-        pDestination[aOffset + aIndex] = pSource[aOffset + aMap[aIndex]];
+    const std::size_t aFullBlockCount = pLength / mBlockSize;
+    const std::size_t aTailOffset = aFullBlockCount * mBlockSize;
+    const std::vector<std::size_t>& aFullMap = GetFullBlockMap();
+    for (std::size_t aBlockIndex = 0; aBlockIndex < aFullBlockCount; ++aBlockIndex) {
+      const std::size_t aOffset = aBlockIndex * mBlockSize;
+      for (std::size_t aIndex = 0; aIndex < mBlockSize; ++aIndex) {
+        pDestination[aOffset + aIndex] = pSource[aOffset + aFullMap[aIndex]];
+      }
+    }
+    const std::size_t aTailLength = pLength - aTailOffset;
+    if (aTailLength > 0) {
+      const std::vector<std::size_t> aTailMap =
+          BuildMap(aTailLength, mCount, mFrontStride, mBackStride);
+      for (std::size_t aIndex = 0; aIndex < aTailLength; ++aIndex) {
+        pDestination[aTailOffset + aIndex] =
+            pSource[aTailOffset + aTailMap[aIndex]];
       }
     }
     return true;
+  }
+
+  const std::vector<std::size_t>& GetFullBlockMap() const {
+    if (mCachedMapBlockSize != mBlockSize) {
+      mCachedMap = BuildMap(mBlockSize, mCount, mFrontStride, mBackStride);
+      mCachedMapBlockSize = mBlockSize;
+    }
+    return mCachedMap;
   }
 
   static std::size_t ClampPositiveCount(int pValue) {
@@ -129,6 +148,8 @@ class WeaveByteBlockCipher final : public LayerCakeCryptDelegate {
   int mCount;
   int mFrontStride;
   int mBackStride;
+  mutable std::size_t mCachedMapBlockSize = static_cast<std::size_t>(-1);
+  mutable std::vector<std::size_t> mCachedMap;
 };
 
 }  // namespace jelly

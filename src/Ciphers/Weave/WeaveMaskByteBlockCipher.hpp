@@ -33,23 +33,24 @@ class WeaveMaskByteBlockCipher final : public LayerCakeCryptDelegate {
         mBackStride(pBackStride) {}
 
   bool SealData(const unsigned char* pSource,
-                const unsigned char* pWorker,
+                unsigned char* pWorker,
                 unsigned char* pDestination,
                 std::size_t pLength,
-                CryptMode pMode) override {
-    return Apply(pSource, pDestination, pLength, pMode);
+                CryptMode pMode) const override {
+    return Apply(pSource, pWorker, pDestination, pLength, pMode);
   }
 
   bool UnsealData(const unsigned char* pSource,
-                  const unsigned char* pWorker,
+                  unsigned char* pWorker,
                   unsigned char* pDestination,
                   std::size_t pLength,
-                  CryptMode pMode) override {
-    return Apply(pSource, pDestination, pLength, pMode);
+                  CryptMode pMode) const override {
+    return Apply(pSource, pWorker, pDestination, pLength, pMode);
   }
 
  private:
   bool Apply(const unsigned char* pSource,
+             unsigned char* pWorker,
              unsigned char* pDestination,
              std::size_t pLength,
              CryptMode pMode) const {
@@ -62,25 +63,47 @@ class WeaveMaskByteBlockCipher final : public LayerCakeCryptDelegate {
     if ((pLength % SB_CIPHER_LENGTH_GRANULARITY) != 0) {
       return false;
     }
-    if (pSource == nullptr || pDestination == nullptr) {
+    if (pSource == nullptr || pWorker == nullptr || pDestination == nullptr) {
       return false;
     }
-    if (pSource == pDestination) {
+    if (pSource == pDestination || pSource == pWorker) {
       return false;
     }
 
-    for (std::size_t aOffset = 0; aOffset < pLength; aOffset += mBlockSize) {
-      const std::size_t aSpan = std::min(mBlockSize, pLength - aOffset);
-      const std::vector<std::size_t> aMap =
-          BuildMap(aSpan, mCount, mFrontStride, mBackStride);
-      std::vector<unsigned char> aMasked(aSpan);
-      for (std::size_t aIndex = 0; aIndex < aSpan; ++aIndex) {
-        aMasked[aIndex] = pSource[aOffset + aMap[aIndex]];
+    const std::size_t aFullBlockCount = pLength / mBlockSize;
+    const std::size_t aTailOffset = aFullBlockCount * mBlockSize;
+    const std::vector<std::size_t>& aFullMap = GetFullBlockMap();
+
+    for (std::size_t aBlockIndex = 0; aBlockIndex < aFullBlockCount; ++aBlockIndex) {
+      const std::size_t aOffset = aBlockIndex * mBlockSize;
+      unsigned char* aMasked = pWorker + aOffset;
+      for (std::size_t aIndex = 0; aIndex < mBlockSize; ++aIndex) {
+        aMasked[aIndex] = pSource[aOffset + aFullMap[aIndex]];
       }
-      BlendMasked(pSource + aOffset, aMasked.data(), pDestination + aOffset,
-                  aSpan, pMode);
+      BlendMasked(pSource + aOffset, aMasked, pDestination + aOffset,
+                  mBlockSize, pMode);
+    }
+
+    const std::size_t aTailLength = pLength - aTailOffset;
+    if (aTailLength > 0) {
+      const std::vector<std::size_t> aTailMap =
+          BuildMap(aTailLength, mCount, mFrontStride, mBackStride);
+      unsigned char* aMasked = pWorker + aTailOffset;
+      for (std::size_t aIndex = 0; aIndex < aTailLength; ++aIndex) {
+        aMasked[aIndex] = pSource[aTailOffset + aTailMap[aIndex]];
+      }
+      BlendMasked(pSource + aTailOffset, aMasked, pDestination + aTailOffset,
+                  aTailLength, pMode);
     }
     return true;
+  }
+
+  const std::vector<std::size_t>& GetFullBlockMap() const {
+    if (mCachedMapBlockSize != mBlockSize) {
+      mCachedMap = BuildMap(mBlockSize, mCount, mFrontStride, mBackStride);
+      mCachedMapBlockSize = mBlockSize;
+    }
+    return mCachedMap;
   }
 
   void BlendMasked(const unsigned char* pBaseSource,
@@ -247,6 +270,8 @@ class WeaveMaskByteBlockCipher final : public LayerCakeCryptDelegate {
   int mCount;
   int mFrontStride;
   int mBackStride;
+  mutable std::size_t mCachedMapBlockSize = static_cast<std::size_t>(-1);
+  mutable std::vector<std::size_t> mCachedMap;
 };
 
 }  // namespace jelly
