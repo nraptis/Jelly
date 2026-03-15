@@ -182,6 +182,31 @@ out     : [BA][9B][FC][9D]
 ```
 
 ================================================================
+## Pepper Family
+
+Ciphers:
+- `PepperCipherXOR`
+- `PepperCipherXORNoise`
+
+Meaning:
+- Uses a static `L1` mask table and repeats it across larger spans.
+- `PepperCipherXOR` mixes masked bytes with a fixed XOR table.
+- `PepperCipherXORNoise` mixes masked bytes with a fixed XOR noise table.
+
+Example idea:
+
+```
+masked : [a][b][c][d]
+key    : [k][l][m][n]
+mix    : [a^k][b^l][c^m][d^n]
+out    : (mix & mask) | (base & ~mask)
+```
+
+Insight:
+- Pepper keeps anti-mask bits untouched.
+- The `L1` table repeating across `L3` adds a useful large-span skew, but it is still a repeating structure.
+
+================================================================
 ## SwapGrid Family
 
 Pairs (16-tile):
@@ -270,6 +295,26 @@ Bit-stack visual (sparse, conceptual):
 ```
 
 After masked spiral: ring positions move, but only masked bit planes move.
+
+================================================================
+## Crackability Notes
+
+- Individual ciphers:
+  Most single ciphers here are structurally simple. On their own, many are likely weak against strong chosen-plaintext or known-plaintext analysis, especially pure permutation ciphers like `Reverse`, `Rotate`, `Splint`, `SwapGrid`, and `SpiralGrid`. Masked variants hide part of the byte plane, but they still expose a lot of structure.
+
+- Two or more stacked ciphers:
+  Stacking helps a lot if the ciphers are different in nature, such as permutation + masked transform + XOR-style mixing. It raises reverse-engineering cost and breaks some obvious direct attacks, but it still does not automatically become "modern cryptography" strength.
+
+- Fourteen ciphers:
+  A long chain of mixed behaviors becomes much harder to reason about by hand. Recovery can become very painful if the attacker does not know the exact order, parameters, masks, and noise tables. Still, if all layers are deterministic and the design is known, the chain may remain vulnerable to deep differential or algebraic study.
+
+- Three layers with two ciphers at each level:
+  This is a more practical strong shape than a huge flat chain. Separate `L1`, `L2`, and `L3` windows create cross-scale confusion, and two ciphers per level can give a useful mix of local and wide movement. It is much more annoying to peel apart than a single-layer stack, but it should still be treated as custom experimental encryption, not a replacement for audited standard ciphers.
+
+================================================================
+## SIMD and NEON
+
+`SIMD` and `NEON` matter here because many of these ciphers are dominated by byte movement, masking, XOR, and blending. Those operations map well to wide vector lanes, so a good `NEON` or `SIMD` path can process `16` or more bytes at once with fewer branches and less scalar loop overhead. The biggest wins usually come from branchless masked blend operations, XOR-style mixing, and fixed-pattern shuffles; the smallest wins usually come from highly irregular permutation maps that still need a lot of scalar address work.
 
 ================================================================
 ## Practical Notes

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/SpiralGridMaskH16_TestBrew.dir/tests_brew/Ciphers/SpiralGridMaskH16_TestBrew.cpp.o -o SpiralGridMaskH16_TestBrew  libtest_brew_support.a libmask_noise_apply.a

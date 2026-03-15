@@ -40,7 +40,7 @@ class PepperCipherXOR final : public LayerCakeCryptDelegate {
   }
 
  private:
-  static constexpr std::size_t kMaskLength = SB_CIPHER_LENGTH_GRANULARITY * 12;
+  static constexpr std::size_t kMaskLength = SB_L1_LENGTH;
   static const std::array<std::uint8_t, kMaskLength> kExampleMask;
 };
 

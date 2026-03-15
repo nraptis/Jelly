@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/BenchmarkRun_SplintMaskCipher.dir/BENCHMARK/BenchmarkRun_SplintMaskCipher.cpp.o -o BenchmarkRun_SplintMaskCipher  libbenchmark_support.a libmask_noise_apply.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblayered_crypt.a CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o
+/usr/bin/ranlib liblayered_crypt.a
