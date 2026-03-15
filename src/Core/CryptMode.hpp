@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "../Jelly.hpp"
+
 namespace jelly {
 
 enum class CryptMode {
@@ -24,6 +26,10 @@ inline const char* GetCryptModeName(CryptMode pMode) {
 }
 
 inline bool IsCryptModeAvailable(CryptMode pMode) {
+  if (JELLY_SOFTWARE_ONLY_MODE) {
+    return pMode == CryptMode::kNormal;
+  }
+
   switch (pMode) {
     case CryptMode::kNormal:
       return true;
@@ -34,7 +40,8 @@ inline bool IsCryptModeAvailable(CryptMode pMode) {
       return false;
 #endif
     case CryptMode::kNeon:
-#if defined(__ARM_NEON) || defined(__ARM_NEON__)
+#if defined(__ARM_NEON) || defined(__ARM_NEON__) || defined(__ARM_FEATURE_NEON) || \
+    defined(__aarch64__) || defined(_M_ARM64)
       return true;
 #else
       return false;

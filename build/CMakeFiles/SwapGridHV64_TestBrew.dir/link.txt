@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/SwapGridHV64_TestBrew.dir/tests_brew/Ciphers/SwapGridHV64_TestBrew.cpp.o -o SwapGridHV64_TestBrew  libtest_brew_support.a

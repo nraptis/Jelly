@@ -56,6 +56,8 @@ int main(int pArgc, char** pArgv) {
       "BenchmarkRun_RippleMaskBlockCipher",
       "BenchmarkRun_InvertCipher",
       "BenchmarkRun_InvertMaskCipher",
+      "BenchmarkRun_PepperCipherXOR",
+      "BenchmarkRun_PepperCipherXORNoise",
       "BenchmarkRun_SwapGridVV16",
       "BenchmarkRun_SwapGridVH16",
       "BenchmarkRun_SwapGridHV16",

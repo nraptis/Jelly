@@ -27,6 +27,13 @@ inline constexpr std::size_t SB_L1_LENGTH = 250176;
 inline constexpr std::size_t SB_L2_LENGTH = 500352;
 inline constexpr std::size_t SB_L3_LENGTH = 1000704;
 
+#ifndef ENCRYPTION_FORCE_SOFTWARE_MODE
+#define ENCRYPTION_FORCE_SOFTWARE_MODE 1
+#endif
+
+inline constexpr bool JELLY_SOFTWARE_ONLY_MODE =
+    (ENCRYPTION_FORCE_SOFTWARE_MODE != 0);
+
 static_assert(SB_L1_LENGTH % EB_MAX_LENGTH == 0,
               "SB_L1_LENGTH must be a multiple of EB_MAX_LENGTH");
 static_assert(SB_L1_LENGTH % EB_BLOCK_SIZE_08 == 0,

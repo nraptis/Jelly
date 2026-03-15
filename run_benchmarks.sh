@@ -8,64 +8,7 @@ aBuildDir="build"
 aSwiftBuildDir="EncryptionTools-main/tests_swift/.build"
 aPassCount=0
 aFailCount=0
-
-aTargets="
-BenchmarkRun_RotateCipher
-BenchmarkRun_RotateBlockCipher
-BenchmarkRun_RotateBlockByteCipher
-BenchmarkRun_RotateMaskCipher
-BenchmarkRun_RotateMaskBlockCipher
-BenchmarkRun_RotateMaskByteBlockCipher
-BenchmarkRun_SplintCipher
-BenchmarkRun_SplintBlockCipher
-BenchmarkRun_SplintByteBlockCipher
-BenchmarkRun_SplintMaskCipher
-BenchmarkRun_SplintMaskBlockCipher
-BenchmarkRun_SplintMaskByteBlockCipher
-BenchmarkRun_WeaveCipher
-BenchmarkRun_WeaveBlockCipher
-BenchmarkRun_WeaveByteBlockCipher
-BenchmarkRun_WeaveMaskCipher
-BenchmarkRun_WeaveMaskBlockCipher
-BenchmarkRun_WeaveMaskByteBlockCipher
-BenchmarkRun_ReverseCipher
-BenchmarkRun_ReverseBlockCipher
-BenchmarkRun_ReverseBlockByteCipher
-BenchmarkRun_ReverseMaskCipher
-BenchmarkRun_ReverseMaskBlockCipher
-BenchmarkRun_ReverseMaskByteBlockCipher
-BenchmarkRun_PasswordCipher
-BenchmarkRun_RippleCipher
-BenchmarkRun_RippleBlockCipher
-BenchmarkRun_RippleMaskCipher
-BenchmarkRun_RippleMaskBlockCipher
-BenchmarkRun_InvertCipher
-BenchmarkRun_InvertMaskCipher
-BenchmarkRun_SwapGridVV16
-BenchmarkRun_SwapGridVH16
-BenchmarkRun_SwapGridHV16
-BenchmarkRun_SwapGridHH16
-BenchmarkRun_SwapGridVV64
-BenchmarkRun_SwapGridVH64
-BenchmarkRun_SwapGridHV64
-BenchmarkRun_SwapGridHH64
-BenchmarkRun_SwapGridMaskVV16
-BenchmarkRun_SwapGridMaskVH16
-BenchmarkRun_SwapGridMaskHV16
-BenchmarkRun_SwapGridMaskHH16
-BenchmarkRun_SwapGridMaskVV64
-BenchmarkRun_SwapGridMaskVH64
-BenchmarkRun_SwapGridMaskHV64
-BenchmarkRun_SwapGridMaskHH64
-BenchmarkRun_SpiralGridH16
-BenchmarkRun_SpiralGridV16
-BenchmarkRun_SpiralGridH64
-BenchmarkRun_SpiralGridV64
-BenchmarkRun_SpiralGridMaskH16
-BenchmarkRun_SpiralGridMaskV16
-BenchmarkRun_SpiralGridMaskH64
-BenchmarkRun_SpiralGridMaskV64
-"
+aTargets=()
 
 rm -rf "$aBuildDir"
 rm -rf "$aSwiftBuildDir"
@@ -77,9 +20,35 @@ cmake -S . -B "$aBuildDir" \
   -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG"
 cmake --build "$aBuildDir" --config Release -j4
 
-for aTarget in $aTargets; do
+while IFS= read -r aTarget; do
+  if [ -n "$aTarget" ]; then
+    aTargets+=("$aTarget")
+  fi
+done <<EOF
+$(awk '
+  /^\s*add_benchmark_target\(/ {
+    gsub(/^[[:space:]]*add_benchmark_target\(/, "", $0)
+    gsub(/\)[[:space:]]*$/, "", $0)
+    print $0
+  }
+' CMakeLists.txt)
+EOF
+
+if [ ${#aTargets[@]} -eq 0 ]; then
+  echo "FAIL No benchmark targets found in CMakeLists.txt"
+  exit 1
+fi
+
+for aTarget in "${aTargets[@]}"; do
+  aBinary="$aBuildDir/$aTarget"
   echo "Running $aTarget"
-  if "$aBuildDir/$aTarget"; then
+  if [ ! -x "$aBinary" ]; then
+    echo "MISSING $aTarget (binary not built)"
+    aFailCount=$((aFailCount + 1))
+    continue
+  fi
+
+  if "$aBinary"; then
     echo "PASS $aTarget"
     aPassCount=$((aPassCount + 1))
   else

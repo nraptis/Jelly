@@ -1,2 +1,0 @@
-/usr/bin/ar qc libbenchmark_support.a CMakeFiles/benchmark_support.dir/BENCHMARK/BenchmarkFlatExecutor.cpp.o CMakeFiles/benchmark_support.dir/BENCHMARK/BenchmarkBlockExecutor.cpp.o
-/usr/bin/ranlib libbenchmark_support.a

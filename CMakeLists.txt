@@ -26,6 +26,26 @@ target_include_directories(masked_password PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+add_library(mask_noise_apply STATIC
+  src/Core/MaskNoiseApplyEngine.cpp
+  src/Core/SampleMixer.cpp
+)
+target_include_directories(mask_noise_apply PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+target_link_libraries(mask_noise_apply PUBLIC jelly)
+
+add_library(layered_crypt STATIC
+  src/Core/EncryptionLayer.cpp
+  src/Core/LayeredCrypt.cpp
+)
+target_include_directories(layered_crypt PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+target_link_libraries(layered_crypt PUBLIC jelly)
+
 set(HAVE_SWIFT_GENERATED_TESTS FALSE)
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/tests_swift/SwiftTestData.cpp)
   set(HAVE_SWIFT_GENERATED_TESTS TRUE)
@@ -48,7 +68,7 @@ target_include_directories(test_brew_support PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_SOURCE_DIR}/tests_brew
 )
-target_link_libraries(test_brew_support PUBLIC jelly)
+target_link_libraries(test_brew_support PUBLIC jelly mask_noise_apply)
 
 add_library(benchmark_support STATIC
   BENCHMARK/BenchmarkFlatExecutor.cpp
@@ -59,7 +79,7 @@ target_include_directories(benchmark_support PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/BENCHMARK
   ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
-target_link_libraries(benchmark_support PUBLIC jelly)
+target_link_libraries(benchmark_support PUBLIC jelly mask_noise_apply)
 
 function(add_benchmark_target name)
   add_executable(${name}
@@ -203,6 +223,8 @@ add_test_brew_target(RippleMaskCipher_TestBrew)
 add_test_brew_target(RippleMaskBlockCipher_TestBrew)
 add_test_brew_target(InvertCipher_TestBrew)
 add_test_brew_target(InvertMaskCipher_TestBrew)
+add_test_brew_target(PepperCipherXOR_TestBrew)
+add_test_brew_target(PepperCipherXORNoise_TestBrew)
 add_test_brew_target(SwapGridVV16_TestBrew)
 add_test_brew_target(SwapGridVH16_TestBrew)
 add_test_brew_target(SwapGridHV16_TestBrew)
@@ -239,6 +261,27 @@ target_include_directories(TestMaskedPassword PRIVATE
 target_link_libraries(TestMaskedPassword PRIVATE masked_password)
 add_test(NAME TestMaskedPassword COMMAND TestMaskedPassword)
 
+add_executable(TestMaskNoiseApplyEngine
+  tests_brew/TestMaskNoiseApplyEngine.cpp
+)
+target_include_directories(TestMaskNoiseApplyEngine PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests_brew
+)
+target_link_libraries(TestMaskNoiseApplyEngine PRIVATE mask_noise_apply)
+add_test(NAME TestMaskNoiseApplyEngine COMMAND TestMaskNoiseApplyEngine)
+
+add_executable(QuickSmokeTest
+  QuickSmokeTest.cpp
+)
+target_include_directories(QuickSmokeTest PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+target_link_libraries(QuickSmokeTest PRIVATE layered_crypt mask_noise_apply)
+add_test(NAME QuickSmokeTest COMMAND QuickSmokeTest)
+
 add_benchmark_target(BenchmarkRun_RotateCipher)
 add_benchmark_target(BenchmarkRun_RotateBlockCipher)
 add_benchmark_target(BenchmarkRun_RotateBlockByteCipher)
@@ -270,6 +313,8 @@ add_benchmark_target(BenchmarkRun_RippleMaskCipher)
 add_benchmark_target(BenchmarkRun_RippleMaskBlockCipher)
 add_benchmark_target(BenchmarkRun_InvertCipher)
 add_benchmark_target(BenchmarkRun_InvertMaskCipher)
+add_benchmark_target(BenchmarkRun_PepperCipherXOR)
+add_benchmark_target(BenchmarkRun_PepperCipherXORNoise)
 add_benchmark_target(BenchmarkRun_SwapGridVV16)
 add_benchmark_target(BenchmarkRun_SwapGridVH16)
 add_benchmark_target(BenchmarkRun_SwapGridHV16)

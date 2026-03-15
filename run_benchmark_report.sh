@@ -10,7 +10,13 @@ aOutputFile="run_benchmark_report_output.txt"
 rm -rf "$aLogsDir"
 mkdir -p "$aLogsDir"
 
-./run_benchmarks.sh
+aRunStatus=0
+./run_benchmarks.sh || aRunStatus=$?
+
+if [ "$aRunStatus" -ne 0 ]; then
+  echo "WARNING: run_benchmarks.sh completed with failures (status=$aRunStatus)."
+  echo "Report will include available successful log files only."
+fi
 
 python3 - "$aLogsDir" "$aOutputFile" <<'PY'
 import datetime as dt

@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/BenchmarkRun_RotateBlockByteCipher.dir/BENCHMARK/BenchmarkRun_RotateBlockByteCipher.cpp.o -o BenchmarkRun_RotateBlockByteCipher  libbenchmark_support.a

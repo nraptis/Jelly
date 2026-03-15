@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtest_brew_support.a CMakeFiles/test_brew_support.dir/tests_brew/TestBrewExecutor.cpp.o CMakeFiles/test_brew_support.dir/tests_brew/TestBrewGenerator.cpp.o
-/usr/bin/ranlib libtest_brew_support.a
