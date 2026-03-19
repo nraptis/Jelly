@@ -6,7 +6,7 @@
 
 #include "../src/Core/CipherFactory.hpp"
 
-namespace jelly::benchmark {
+namespace peanutbutter::benchmark {
 
 bool BenchmarkBlock(const BlockCipherFactory& pFactory,
                     int pBlockSize,
@@ -14,6 +14,6 @@ bool BenchmarkBlock(const BlockCipherFactory& pFactory,
                     const std::string& pOutputFile,
                     std::string* pError = nullptr);
 
-}  // namespace jelly::benchmark
+}  // namespace peanutbutter::benchmark
 
 #endif  // JELLY_BENCHMARK_BENCHMARK_BLOCK_EXECUTOR_HPP_

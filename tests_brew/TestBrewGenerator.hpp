@@ -4,9 +4,9 @@
 #include <cstddef>
 #include <vector>
 
-#include "../src/Jelly.hpp"
+#include "../src/PeanutButter.hpp"
 
-namespace jelly {
+namespace peanutbutter {
 
 class TestBrewGenerator {
  public:
@@ -18,6 +18,6 @@ class TestBrewGenerator {
   static std::size_t NormalizeLength(std::size_t pLength);
 };
 
-}  // namespace jelly
+}  // namespace peanutbutter
 
 #endif

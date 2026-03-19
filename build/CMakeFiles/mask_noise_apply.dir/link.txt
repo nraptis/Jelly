@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmask_noise_apply.a CMakeFiles/mask_noise_apply.dir/src/Core/MaskNoiseApplyEngine.cpp.o CMakeFiles/mask_noise_apply.dir/src/Core/SampleMixer.cpp.o
-/usr/bin/ranlib libmask_noise_apply.a

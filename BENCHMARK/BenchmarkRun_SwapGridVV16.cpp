@@ -1,11 +1,11 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/SwapGrid/SwapGridVV16.hpp"
+#include "../src/Encryption/Ciphers/SwapGrid/SwapGridVV16.hpp"
 
 int main() {
-  return jelly::benchmark::RunFlatBenchmark(
-      "swap_grid_vv_16", [](std::size_t, jelly::CryptMode) {
-        return std::make_unique<jelly::SwapGridVV16>();
+  return peanutbutter::benchmark::RunFlatBenchmark(
+      "swap_grid_vv_16", [](std::size_t, peanutbutter::CryptMode) {
+        return std::make_unique<peanutbutter::SwapGridVV16>();
       });
 }
 

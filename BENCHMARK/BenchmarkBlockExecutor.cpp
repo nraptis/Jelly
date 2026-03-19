@@ -1,9 +1,9 @@
 #include "BenchmarkBlockExecutor.hpp"
 
 #include "BenchmarkFlatExecutor.hpp"
-#include "../src/Jelly.hpp"
+#include "../src/PeanutButter.hpp"
 
-namespace jelly::benchmark {
+namespace peanutbutter::benchmark {
 
 bool BenchmarkBlock(const BlockCipherFactory& pFactory,
                     int pBlockSize,
@@ -16,7 +16,7 @@ bool BenchmarkBlock(const BlockCipherFactory& pFactory,
     }
     return false;
   }
-  if ((pDataLength % SB_CIPHER_LENGTH_GRANULARITY) != 0) {
+  if ((pDataLength % BLOCK_GRANULARITY) != 0) {
     if (pError != nullptr) {
       *pError = "pDataLength must be a multiple of 192";
     }
@@ -29,4 +29,4 @@ bool BenchmarkBlock(const BlockCipherFactory& pFactory,
       pDataLength, pOutputFile, pError);
 }
 
-}  // namespace jelly::benchmark
+}  // namespace peanutbutter::benchmark

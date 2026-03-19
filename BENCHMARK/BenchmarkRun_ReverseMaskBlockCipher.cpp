@@ -1,46 +1,46 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Reverse/ReverseMaskBlockCipher.hpp"
+#include "../src/Encryption/Ciphers/Reverse/ReverseMaskBlockCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunForEveryBlockSize(
+  return peanutbutter::benchmark::RunForEveryBlockSize(
       "reverse_mask_block", [](int pBlockSize, const std::string& pStem) {
-        return jelly::benchmark::RunBlockBenchmark(
+        return peanutbutter::benchmark::RunBlockBenchmark(
             pStem, pBlockSize,
-            [pBlockSize](int, std::size_t, jelly::CryptMode) {
+            [pBlockSize](int, std::size_t, peanutbutter::CryptMode) {
               switch (pBlockSize) {
-                case jelly::EB_BLOCK_SIZE_08:
-                  return std::unique_ptr<jelly::Crypt>(std::make_unique<
-                                                       jelly::ReverseMaskBlockCipher<
-                                                           jelly::EB_BLOCK_SIZE_08>>(
+                case 8:
+                  return std::unique_ptr<peanutbutter::Crypt>(std::make_unique<
+                                                       peanutbutter::ReverseMaskBlockCipher<
+                                                           8>>(
                       0xA3u));
-                case jelly::EB_BLOCK_SIZE_12:
-                  return std::unique_ptr<jelly::Crypt>(std::make_unique<
-                                                       jelly::ReverseMaskBlockCipher<
-                                                           jelly::EB_BLOCK_SIZE_12>>(
+                case 12:
+                  return std::unique_ptr<peanutbutter::Crypt>(std::make_unique<
+                                                       peanutbutter::ReverseMaskBlockCipher<
+                                                           12>>(
                       0xA3u));
-                case jelly::EB_BLOCK_SIZE_16:
-                  return std::unique_ptr<jelly::Crypt>(std::make_unique<
-                                                       jelly::ReverseMaskBlockCipher<
-                                                           jelly::EB_BLOCK_SIZE_16>>(
+                case 16:
+                  return std::unique_ptr<peanutbutter::Crypt>(std::make_unique<
+                                                       peanutbutter::ReverseMaskBlockCipher<
+                                                           16>>(
                       0xA3u));
-                case jelly::EB_BLOCK_SIZE_24:
-                  return std::unique_ptr<jelly::Crypt>(std::make_unique<
-                                                       jelly::ReverseMaskBlockCipher<
-                                                           jelly::EB_BLOCK_SIZE_24>>(
+                case 24:
+                  return std::unique_ptr<peanutbutter::Crypt>(std::make_unique<
+                                                       peanutbutter::ReverseMaskBlockCipher<
+                                                           24>>(
                       0xA3u));
-                case jelly::EB_BLOCK_SIZE_32:
-                  return std::unique_ptr<jelly::Crypt>(std::make_unique<
-                                                       jelly::ReverseMaskBlockCipher<
-                                                           jelly::EB_BLOCK_SIZE_32>>(
+                case 32:
+                  return std::unique_ptr<peanutbutter::Crypt>(std::make_unique<
+                                                       peanutbutter::ReverseMaskBlockCipher<
+                                                           32>>(
                       0xA3u));
-                case jelly::EB_BLOCK_SIZE_48:
-                  return std::unique_ptr<jelly::Crypt>(std::make_unique<
-                                                       jelly::ReverseMaskBlockCipher<
-                                                           jelly::EB_BLOCK_SIZE_48>>(
+                case 48:
+                  return std::unique_ptr<peanutbutter::Crypt>(std::make_unique<
+                                                       peanutbutter::ReverseMaskBlockCipher<
+                                                           48>>(
                       0xA3u));
               }
-              return std::unique_ptr<jelly::Crypt>();
+              return std::unique_ptr<peanutbutter::Crypt>();
             });
       });
 }

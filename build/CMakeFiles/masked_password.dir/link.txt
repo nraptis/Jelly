@@ -1,2 +1,0 @@
-/usr/bin/ar qc libmasked_password.a CMakeFiles/masked_password.dir/src/Core/MaskedPassword.cpp.o
-/usr/bin/ranlib libmasked_password.a

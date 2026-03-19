@@ -1,20 +1,20 @@
 #include <string>
 
-#include "../../src/Jelly.hpp"
-#include "../../src/Ciphers/Splint/SplintMaskBlockCipher.hpp"
+#include "../../src/PeanutButter.hpp"
+#include "../../src/Encryption/Ciphers/Splint/SplintMaskBlockCipher.hpp"
 #include "../TestBrewExecutor.hpp"
 #include "TestBrewCipherSupport.hpp"
 
 int main() {
-  return jelly::test_brew::RunForEveryBlockSize(
+  return peanutbutter::test_brew::RunForEveryBlockSize(
       "SplintMaskBlockCipher", [](int pBlockSize, std::string& pError) {
-                                jelly::ExecuteTestBrew_Block(
+                                peanutbutter::ExecuteTestBrew_Block(
                                     [](int pInnerBlockSize,
                                        std::size_t pCaseIndex,
-                                       jelly::CryptMode) {
-                                      return std::make_unique<jelly::SplintMaskBlockCipher>(
+                                       peanutbutter::CryptMode) {
+                                      return std::make_unique<peanutbutter::SplintMaskBlockCipher>(
                                           pInnerBlockSize,
-                                          jelly::test_brew::CaseMask(
+                                          peanutbutter::test_brew::CaseMask(
                                               pCaseIndex, 0x108u));
                                     },
                                     pBlockSize, "SplintMaskBlockCipher",

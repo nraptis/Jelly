@@ -1,0 +1,206 @@
+#ifndef PEANUTBUTTER_PEPPER_DUAL_JUMP_NOISE_XOR_CIPHER_HPP_
+#define PEANUTBUTTER_PEPPER_DUAL_JUMP_NOISE_XOR_CIPHER_HPP_
+
+#include <cstddef>
+#include <cstdint>
+#include <string>
+
+#if defined(__ARM_NEON) || defined(__ARM_NEON__)
+#include <arm_neon.h>
+#endif
+
+#if defined(__AVX2__) || defined(__SSSE3__)
+#include <immintrin.h>
+#endif
+
+#include "../../Crypt.hpp"
+#include "../../../PeanutButter.hpp"
+
+namespace peanutbutter {
+
+// Input shape: pLength must be a multiple of BLOCK_GRANULARITY; mask, noise, mask-jump, and noise-jump lengths must be positive multiples of 16.
+
+class PepperDualJumpNoiseXORCipher final : public Crypt {
+ public:
+  PepperDualJumpNoiseXORCipher(const unsigned char* pMask,
+                               int pMaskLength,
+                               const unsigned char* pNoise,
+                               int pNoiseLength,
+                               const unsigned char* pMaskJumps,
+                               int pMaskJumpLength,
+                               const unsigned char* pNoiseJumps,
+                               int pNoiseJumpLength)
+      : mMask(pMask),
+        mMaskLength(pMaskLength),
+        mNoise(pNoise),
+        mNoiseLength(pNoiseLength),
+        mMaskJumps(pMaskJumps),
+        mMaskJumpLength(pMaskJumpLength),
+        mNoiseJumps(pNoiseJumps),
+        mNoiseJumpLength(pNoiseJumpLength) {}
+
+  bool SealData(const unsigned char* pSource,
+                unsigned char* pWorker,
+                unsigned char* pDestination,
+                std::size_t pLength,
+                std::string* pErrorMessage,
+                CryptMode pMode) const override {
+    return Apply(pSource, pWorker, pDestination, pLength, pErrorMessage, pMode);
+  }
+
+  bool UnsealData(const unsigned char* pSource,
+                  unsigned char* pWorker,
+                  unsigned char* pDestination,
+                  std::size_t pLength,
+                  std::string* pErrorMessage,
+                  CryptMode pMode) const override {
+    return Apply(pSource, pWorker, pDestination, pLength, pErrorMessage, pMode);
+  }
+
+ private:
+  bool Apply(const unsigned char* pSource,
+             unsigned char* pWorker,
+             unsigned char* pDestination,
+             std::size_t pLength,
+             std::string* pErrorMessage,
+             CryptMode pMode) const {
+    (void)pWorker;
+    if (pErrorMessage != nullptr) {
+      pErrorMessage->clear();
+    }
+    if (pLength == 0u) {
+      return true;
+    }
+    if ((pLength % BLOCK_GRANULARITY) != 0u) {
+      if (pErrorMessage != nullptr) {
+        *pErrorMessage = "pLength must be a multiple of BLOCK_GRANULARITY";
+      }
+      return false;
+    }
+    if (pSource == nullptr || pDestination == nullptr || mMask == nullptr ||
+        mNoise == nullptr || mMaskJumps == nullptr || mNoiseJumps == nullptr) {
+      if (pErrorMessage != nullptr) {
+        *pErrorMessage = "null buffer in PepperDualJumpNoiseXORCipher";
+      }
+      return false;
+    }
+    if (pSource == pDestination) {
+      if (pErrorMessage != nullptr) {
+        *pErrorMessage = "source and destination must not alias";
+      }
+      return false;
+    }
+    if (mMaskLength <= 0 || (mMaskLength % 16) != 0 || mNoiseLength <= 0 ||
+        (mNoiseLength % 16) != 0 || mMaskJumpLength <= 0 ||
+        (mMaskJumpLength % 16) != 0 || mNoiseJumpLength <= 0 ||
+        (mNoiseJumpLength % 16) != 0) {
+      if (pErrorMessage != nullptr) {
+        *pErrorMessage =
+            "mask, noise, mask-jump, and noise-jump lengths must be positive multiples of 16";
+      }
+      return false;
+    }
+
+    const std::size_t aChunkCount = pLength >> 4;
+    const std::size_t aMaskChunkCount = static_cast<std::size_t>(mMaskLength) >> 4;
+    const std::size_t aNoiseChunkCount =
+        static_cast<std::size_t>(mNoiseLength) >> 4;
+    const bool aPowerOfTwoMaskChunks =
+        (aMaskChunkCount & (aMaskChunkCount - 1u)) == 0u;
+    const bool aPowerOfTwoNoiseChunks =
+        (aNoiseChunkCount & (aNoiseChunkCount - 1u)) == 0u;
+
+    std::size_t aMaskChunkIndex = 0u;
+    std::size_t aNoiseChunkIndex = 0u;
+    std::size_t aMaskJumpIndex = 0u;
+    std::size_t aNoiseJumpIndex = 0u;
+
+    for (std::size_t aChunk = 0; aChunk < aChunkCount; ++aChunk) {
+      const unsigned char* aSourcePtr = pSource + (aChunk << 4);
+      const unsigned char* aMaskPtr = mMask + (aMaskChunkIndex << 4);
+      const unsigned char* aNoisePtr = mNoise + (aNoiseChunkIndex << 4);
+      unsigned char* aDestinationPtr = pDestination + (aChunk << 4);
+
+      switch (pMode) {
+        case CryptMode::kNormal:
+          for (std::size_t aIndex = 0; aIndex < 16; ++aIndex) {
+            aDestinationPtr[aIndex] = static_cast<unsigned char>(
+                aSourcePtr[aIndex] ^ aMaskPtr[aIndex] ^ aNoisePtr[aIndex]);
+          }
+          break;
+        case CryptMode::kSimd:
+#if defined(__AVX2__) || defined(__SSSE3__)
+          _mm_storeu_si128(
+              reinterpret_cast<__m128i*>(aDestinationPtr),
+              _mm_xor_si128(
+                  _mm_xor_si128(
+                      _mm_loadu_si128(reinterpret_cast<const __m128i*>(aSourcePtr)),
+                      _mm_loadu_si128(reinterpret_cast<const __m128i*>(aMaskPtr))),
+                  _mm_loadu_si128(reinterpret_cast<const __m128i*>(aNoisePtr))));
+#else
+          for (std::size_t aIndex = 0; aIndex < 16; ++aIndex) {
+            aDestinationPtr[aIndex] = static_cast<unsigned char>(
+                aSourcePtr[aIndex] ^ aMaskPtr[aIndex] ^ aNoisePtr[aIndex]);
+          }
+#endif
+          break;
+        case CryptMode::kNeon:
+#if defined(__ARM_NEON) || defined(__ARM_NEON__)
+          vst1q_u8(
+              aDestinationPtr,
+              veorq_u8(veorq_u8(vld1q_u8(aSourcePtr), vld1q_u8(aMaskPtr)),
+                       vld1q_u8(aNoisePtr)));
+#else
+          for (std::size_t aIndex = 0; aIndex < 16; ++aIndex) {
+            aDestinationPtr[aIndex] = static_cast<unsigned char>(
+                aSourcePtr[aIndex] ^ aMaskPtr[aIndex] ^ aNoisePtr[aIndex]);
+          }
+#endif
+          break;
+      }
+
+      const std::size_t aMaskJump =
+          static_cast<std::size_t>(mMaskJumps[aMaskJumpIndex]);
+      const std::size_t aNoiseJump =
+          static_cast<std::size_t>(mNoiseJumps[aNoiseJumpIndex]);
+
+      ++aMaskJumpIndex;
+      if (aMaskJumpIndex == static_cast<std::size_t>(mMaskJumpLength)) {
+        aMaskJumpIndex = 0u;
+      }
+      ++aNoiseJumpIndex;
+      if (aNoiseJumpIndex == static_cast<std::size_t>(mNoiseJumpLength)) {
+        aNoiseJumpIndex = 0u;
+      }
+
+      aMaskChunkIndex += aMaskJump;
+      aNoiseChunkIndex += aNoiseJump;
+
+      if (aPowerOfTwoMaskChunks) {
+        aMaskChunkIndex &= (aMaskChunkCount - 1u);
+      } else {
+        aMaskChunkIndex %= aMaskChunkCount;
+      }
+      if (aPowerOfTwoNoiseChunks) {
+        aNoiseChunkIndex &= (aNoiseChunkCount - 1u);
+      } else {
+        aNoiseChunkIndex %= aNoiseChunkCount;
+      }
+    }
+
+    return true;
+  }
+
+  const unsigned char* mMask = nullptr;
+  int mMaskLength = 0;
+  const unsigned char* mNoise = nullptr;
+  int mNoiseLength = 0;
+  const unsigned char* mMaskJumps = nullptr;
+  int mMaskJumpLength = 0;
+  const unsigned char* mNoiseJumps = nullptr;
+  int mNoiseJumpLength = 0;
+};
+
+}  // namespace peanutbutter
+
+#endif  // PEANUTBUTTER_PEPPER_DUAL_JUMP_NOISE_XOR_CIPHER_HPP_

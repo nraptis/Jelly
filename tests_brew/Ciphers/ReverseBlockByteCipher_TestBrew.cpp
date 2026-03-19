@@ -1,7 +1,7 @@
 #include <string>
 
-#include "../../src/Ciphers/Reverse/ReverseBlockByteCipher.hpp"
-#include "../../src/Jelly.hpp"
+#include "../../src/Encryption/Ciphers/Reverse/ReverseBlockByteCipher.hpp"
+#include "../../src/PeanutButter.hpp"
 #include "../TestBrewExecutor.hpp"
 #include "TestBrewCipherSupport.hpp"
 
@@ -10,12 +10,12 @@ namespace {
 template <std::size_t tBlockSize>
 int RunCase() {
   std::string aError;
-  jelly::ExecuteTestBrew_Block(
-      [](int, std::size_t, jelly::CryptMode) {
-        return std::make_unique<jelly::ReverseBlockByteCipher<tBlockSize>>();
+  peanutbutter::ExecuteTestBrew_Block(
+      [](int, std::size_t, peanutbutter::CryptMode) {
+        return std::make_unique<peanutbutter::ReverseBlockByteCipher<tBlockSize>>();
       },
       static_cast<int>(tBlockSize), "ReverseBlockByteCipher", &aError);
-  return jelly::test_brew::ReportBlockResult("ReverseBlockByteCipher",
+  return peanutbutter::test_brew::ReportBlockResult("ReverseBlockByteCipher",
                                              static_cast<int>(tBlockSize),
                                              aError);
 }
@@ -23,11 +23,11 @@ int RunCase() {
 }  // namespace
 
 int main() {
-  if (RunCase<jelly::EB_BLOCK_SIZE_08>() != 0) return 1;
-  if (RunCase<jelly::EB_BLOCK_SIZE_12>() != 0) return 1;
-  if (RunCase<jelly::EB_BLOCK_SIZE_16>() != 0) return 1;
-  if (RunCase<jelly::EB_BLOCK_SIZE_24>() != 0) return 1;
-  if (RunCase<jelly::EB_BLOCK_SIZE_32>() != 0) return 1;
-  if (RunCase<jelly::EB_BLOCK_SIZE_48>() != 0) return 1;
+  if (RunCase<8>() != 0) return 1;
+  if (RunCase<12>() != 0) return 1;
+  if (RunCase<16>() != 0) return 1;
+  if (RunCase<24>() != 0) return 1;
+  if (RunCase<32>() != 0) return 1;
+  if (RunCase<48>() != 0) return 1;
   return 0;
 }

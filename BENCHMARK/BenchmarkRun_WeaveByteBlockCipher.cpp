@@ -1,14 +1,14 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Weave/WeaveByteBlockCipher.hpp"
+#include "../src/Encryption/Ciphers/Weave/WeaveByteBlockCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunForEveryBlockSize(
+  return peanutbutter::benchmark::RunForEveryBlockSize(
       "weave_byte_block", [](int pBlockSize, const std::string& pStem) {
-        return jelly::benchmark::RunBlockBenchmark(
+        return peanutbutter::benchmark::RunBlockBenchmark(
             pStem, pBlockSize,
-            [](int pInnerBlockSize, std::size_t, jelly::CryptMode) {
-              return std::make_unique<jelly::WeaveByteBlockCipher>(
+            [](int pInnerBlockSize, std::size_t, peanutbutter::CryptMode) {
+              return std::make_unique<peanutbutter::WeaveByteBlockCipher>(
                   pInnerBlockSize, 3, 1, 2);
             });
       });

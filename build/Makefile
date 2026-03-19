@@ -127,32 +127,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named masked_password
-
-# Build rule for target.
-masked_password: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 masked_password
-.PHONY : masked_password
-
-# fast build rule for target.
-masked_password/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/masked_password.dir/build.make CMakeFiles/masked_password.dir/build
-.PHONY : masked_password/fast
-
-#=============================================================================
-# Target rules for targets named mask_noise_apply
-
-# Build rule for target.
-mask_noise_apply: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mask_noise_apply
-.PHONY : mask_noise_apply
-
-# fast build rule for target.
-mask_noise_apply/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/build
-.PHONY : mask_noise_apply/fast
-
-#=============================================================================
 # Target rules for targets named layered_crypt
 
 # Build rule for target.
@@ -164,6 +138,19 @@ layered_crypt: cmake_check_build_system
 layered_crypt/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/build
 .PHONY : layered_crypt/fast
+
+#=============================================================================
+# Target rules for targets named peanut_tables
+
+# Build rule for target.
+peanut_tables: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 peanut_tables
+.PHONY : peanut_tables
+
+# fast build rule for target.
+peanut_tables/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/peanut_tables.dir/build.make CMakeFiles/peanut_tables.dir/build
+.PHONY : peanut_tables/fast
 
 #=============================================================================
 # Target rules for targets named test_brew_support
@@ -504,17 +491,82 @@ ReverseMaskByteBlockCipher_TestBrew/fast:
 .PHONY : ReverseMaskByteBlockCipher_TestBrew/fast
 
 #=============================================================================
-# Target rules for targets named PasswordCipher_TestBrew
+# Target rules for targets named PasswordAddCipher_TestBrew
 
 # Build rule for target.
-PasswordCipher_TestBrew: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordCipher_TestBrew
-.PHONY : PasswordCipher_TestBrew
+PasswordAddCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordAddCipher_TestBrew
+.PHONY : PasswordAddCipher_TestBrew
 
 # fast build rule for target.
-PasswordCipher_TestBrew/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordCipher_TestBrew.dir/build.make CMakeFiles/PasswordCipher_TestBrew.dir/build
-.PHONY : PasswordCipher_TestBrew/fast
+PasswordAddCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordAddCipher_TestBrew.dir/build
+.PHONY : PasswordAddCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PasswordSubtractCipher_TestBrew
+
+# Build rule for target.
+PasswordSubtractCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordSubtractCipher_TestBrew
+.PHONY : PasswordSubtractCipher_TestBrew
+
+# fast build rule for target.
+PasswordSubtractCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordSubtractCipher_TestBrew.dir/build
+.PHONY : PasswordSubtractCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PasswordXORCipher_TestBrew
+
+# Build rule for target.
+PasswordXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordXORCipher_TestBrew
+.PHONY : PasswordXORCipher_TestBrew
+
+# fast build rule for target.
+PasswordXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordXORCipher_TestBrew.dir/build
+.PHONY : PasswordXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PasswordJumpAddCipher_TestBrew
+
+# Build rule for target.
+PasswordJumpAddCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordJumpAddCipher_TestBrew
+.PHONY : PasswordJumpAddCipher_TestBrew
+
+# fast build rule for target.
+PasswordJumpAddCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/build
+.PHONY : PasswordJumpAddCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PasswordJumpSubtractCipher_TestBrew
+
+# Build rule for target.
+PasswordJumpSubtractCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordJumpSubtractCipher_TestBrew
+.PHONY : PasswordJumpSubtractCipher_TestBrew
+
+# fast build rule for target.
+PasswordJumpSubtractCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/build
+.PHONY : PasswordJumpSubtractCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PasswordJumpXORCipher_TestBrew
+
+# Build rule for target.
+PasswordJumpXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PasswordJumpXORCipher_TestBrew
+.PHONY : PasswordJumpXORCipher_TestBrew
+
+# fast build rule for target.
+PasswordJumpXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/build
+.PHONY : PasswordJumpXORCipher_TestBrew/fast
 
 #=============================================================================
 # Target rules for targets named RippleCipher_TestBrew
@@ -595,30 +647,121 @@ InvertMaskCipher_TestBrew/fast:
 .PHONY : InvertMaskCipher_TestBrew/fast
 
 #=============================================================================
-# Target rules for targets named PepperCipherXOR_TestBrew
+# Target rules for targets named PepperAddCipher_TestBrew
 
 # Build rule for target.
-PepperCipherXOR_TestBrew: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperCipherXOR_TestBrew
-.PHONY : PepperCipherXOR_TestBrew
+PepperAddCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperAddCipher_TestBrew
+.PHONY : PepperAddCipher_TestBrew
 
 # fast build rule for target.
-PepperCipherXOR_TestBrew/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXOR_TestBrew.dir/build.make CMakeFiles/PepperCipherXOR_TestBrew.dir/build
-.PHONY : PepperCipherXOR_TestBrew/fast
+PepperAddCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperAddCipher_TestBrew.dir/build.make CMakeFiles/PepperAddCipher_TestBrew.dir/build
+.PHONY : PepperAddCipher_TestBrew/fast
 
 #=============================================================================
-# Target rules for targets named PepperCipherXORNoise_TestBrew
+# Target rules for targets named PepperSubtractCipher_TestBrew
 
 # Build rule for target.
-PepperCipherXORNoise_TestBrew: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperCipherXORNoise_TestBrew
-.PHONY : PepperCipherXORNoise_TestBrew
+PepperSubtractCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperSubtractCipher_TestBrew
+.PHONY : PepperSubtractCipher_TestBrew
 
 # fast build rule for target.
-PepperCipherXORNoise_TestBrew/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXORNoise_TestBrew.dir/build.make CMakeFiles/PepperCipherXORNoise_TestBrew.dir/build
-.PHONY : PepperCipherXORNoise_TestBrew/fast
+PepperSubtractCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperSubtractCipher_TestBrew.dir/build.make CMakeFiles/PepperSubtractCipher_TestBrew.dir/build
+.PHONY : PepperSubtractCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PepperXORCipher_TestBrew
+
+# Build rule for target.
+PepperXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperXORCipher_TestBrew
+.PHONY : PepperXORCipher_TestBrew
+
+# fast build rule for target.
+PepperXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperXORCipher_TestBrew.dir/build.make CMakeFiles/PepperXORCipher_TestBrew.dir/build
+.PHONY : PepperXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PepperJumpXORCipher_TestBrew
+
+# Build rule for target.
+PepperJumpXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperJumpXORCipher_TestBrew
+.PHONY : PepperJumpXORCipher_TestBrew
+
+# fast build rule for target.
+PepperJumpXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpXORCipher_TestBrew.dir/build
+.PHONY : PepperJumpXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PepperNoiseXORCipher_TestBrew
+
+# Build rule for target.
+PepperNoiseXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperNoiseXORCipher_TestBrew
+.PHONY : PepperNoiseXORCipher_TestBrew
+
+# fast build rule for target.
+PepperNoiseXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/build
+.PHONY : PepperNoiseXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PepperJumpNoiseXORCipher_TestBrew
+
+# Build rule for target.
+PepperJumpNoiseXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperJumpNoiseXORCipher_TestBrew
+.PHONY : PepperJumpNoiseXORCipher_TestBrew
+
+# fast build rule for target.
+PepperJumpNoiseXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/build
+.PHONY : PepperJumpNoiseXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named PepperDualJumpNoiseXORCipher_TestBrew
+
+# Build rule for target.
+PepperDualJumpNoiseXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 PepperDualJumpNoiseXORCipher_TestBrew
+.PHONY : PepperDualJumpNoiseXORCipher_TestBrew
+
+# fast build rule for target.
+PepperDualJumpNoiseXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/build
+.PHONY : PepperDualJumpNoiseXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named CascadeXORCipher_TestBrew
+
+# Build rule for target.
+CascadeXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CascadeXORCipher_TestBrew
+.PHONY : CascadeXORCipher_TestBrew
+
+# fast build rule for target.
+CascadeXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeXORCipher_TestBrew.dir/build
+.PHONY : CascadeXORCipher_TestBrew/fast
+
+#=============================================================================
+# Target rules for targets named CascadeJumpXORCipher_TestBrew
+
+# Build rule for target.
+CascadeJumpXORCipher_TestBrew: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CascadeJumpXORCipher_TestBrew
+.PHONY : CascadeJumpXORCipher_TestBrew
+
+# fast build rule for target.
+CascadeJumpXORCipher_TestBrew/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/build
+.PHONY : CascadeJumpXORCipher_TestBrew/fast
 
 #=============================================================================
 # Target rules for targets named SwapGridVV16_TestBrew
@@ -933,32 +1076,6 @@ SpiralGridMaskV64_TestBrew/fast:
 .PHONY : SpiralGridMaskV64_TestBrew/fast
 
 #=============================================================================
-# Target rules for targets named TestMaskedPassword
-
-# Build rule for target.
-TestMaskedPassword: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TestMaskedPassword
-.PHONY : TestMaskedPassword
-
-# fast build rule for target.
-TestMaskedPassword/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskedPassword.dir/build.make CMakeFiles/TestMaskedPassword.dir/build
-.PHONY : TestMaskedPassword/fast
-
-#=============================================================================
-# Target rules for targets named TestMaskNoiseApplyEngine
-
-# Build rule for target.
-TestMaskNoiseApplyEngine: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TestMaskNoiseApplyEngine
-.PHONY : TestMaskNoiseApplyEngine
-
-# fast build rule for target.
-TestMaskNoiseApplyEngine/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskNoiseApplyEngine.dir/build.make CMakeFiles/TestMaskNoiseApplyEngine.dir/build
-.PHONY : TestMaskNoiseApplyEngine/fast
-
-#=============================================================================
 # Target rules for targets named QuickSmokeTest
 
 # Build rule for target.
@@ -970,6 +1087,19 @@ QuickSmokeTest: cmake_check_build_system
 QuickSmokeTest/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QuickSmokeTest.dir/build.make CMakeFiles/QuickSmokeTest.dir/build
 .PHONY : QuickSmokeTest/fast
+
+#=============================================================================
+# Target rules for targets named CompatabilityTests
+
+# Build rule for target.
+CompatabilityTests: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CompatabilityTests
+.PHONY : CompatabilityTests
+
+# fast build rule for target.
+CompatabilityTests/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompatabilityTests.dir/build.make CMakeFiles/CompatabilityTests.dir/build
+.PHONY : CompatabilityTests/fast
 
 #=============================================================================
 # Target rules for targets named BenchmarkRun_RotateCipher
@@ -1284,17 +1414,82 @@ BenchmarkRun_ReverseMaskByteBlockCipher/fast:
 .PHONY : BenchmarkRun_ReverseMaskByteBlockCipher/fast
 
 #=============================================================================
-# Target rules for targets named BenchmarkRun_PasswordCipher
+# Target rules for targets named BenchmarkRun_PasswordAddCipher
 
 # Build rule for target.
-BenchmarkRun_PasswordCipher: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordCipher
-.PHONY : BenchmarkRun_PasswordCipher
+BenchmarkRun_PasswordAddCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordAddCipher
+.PHONY : BenchmarkRun_PasswordAddCipher
 
 # fast build rule for target.
-BenchmarkRun_PasswordCipher/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordCipher.dir/build
-.PHONY : BenchmarkRun_PasswordCipher/fast
+BenchmarkRun_PasswordAddCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/build
+.PHONY : BenchmarkRun_PasswordAddCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PasswordSubtractCipher
+
+# Build rule for target.
+BenchmarkRun_PasswordSubtractCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordSubtractCipher
+.PHONY : BenchmarkRun_PasswordSubtractCipher
+
+# fast build rule for target.
+BenchmarkRun_PasswordSubtractCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/build
+.PHONY : BenchmarkRun_PasswordSubtractCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PasswordXORCipher
+
+# Build rule for target.
+BenchmarkRun_PasswordXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordXORCipher
+.PHONY : BenchmarkRun_PasswordXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PasswordXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/build
+.PHONY : BenchmarkRun_PasswordXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PasswordJumpAddCipher
+
+# Build rule for target.
+BenchmarkRun_PasswordJumpAddCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordJumpAddCipher
+.PHONY : BenchmarkRun_PasswordJumpAddCipher
+
+# fast build rule for target.
+BenchmarkRun_PasswordJumpAddCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/build
+.PHONY : BenchmarkRun_PasswordJumpAddCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PasswordJumpSubtractCipher
+
+# Build rule for target.
+BenchmarkRun_PasswordJumpSubtractCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordJumpSubtractCipher
+.PHONY : BenchmarkRun_PasswordJumpSubtractCipher
+
+# fast build rule for target.
+BenchmarkRun_PasswordJumpSubtractCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/build
+.PHONY : BenchmarkRun_PasswordJumpSubtractCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PasswordJumpXORCipher
+
+# Build rule for target.
+BenchmarkRun_PasswordJumpXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PasswordJumpXORCipher
+.PHONY : BenchmarkRun_PasswordJumpXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PasswordJumpXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/build
+.PHONY : BenchmarkRun_PasswordJumpXORCipher/fast
 
 #=============================================================================
 # Target rules for targets named BenchmarkRun_RippleCipher
@@ -1375,30 +1570,121 @@ BenchmarkRun_InvertMaskCipher/fast:
 .PHONY : BenchmarkRun_InvertMaskCipher/fast
 
 #=============================================================================
-# Target rules for targets named BenchmarkRun_PepperCipherXOR
+# Target rules for targets named BenchmarkRun_PepperAddCipher
 
 # Build rule for target.
-BenchmarkRun_PepperCipherXOR: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperCipherXOR
-.PHONY : BenchmarkRun_PepperCipherXOR
+BenchmarkRun_PepperAddCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperAddCipher
+.PHONY : BenchmarkRun_PepperAddCipher
 
 # fast build rule for target.
-BenchmarkRun_PepperCipherXOR/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/build
-.PHONY : BenchmarkRun_PepperCipherXOR/fast
+BenchmarkRun_PepperAddCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperAddCipher.dir/build
+.PHONY : BenchmarkRun_PepperAddCipher/fast
 
 #=============================================================================
-# Target rules for targets named BenchmarkRun_PepperCipherXORNoise
+# Target rules for targets named BenchmarkRun_PepperSubtractCipher
 
 # Build rule for target.
-BenchmarkRun_PepperCipherXORNoise: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperCipherXORNoise
-.PHONY : BenchmarkRun_PepperCipherXORNoise
+BenchmarkRun_PepperSubtractCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperSubtractCipher
+.PHONY : BenchmarkRun_PepperSubtractCipher
 
 # fast build rule for target.
-BenchmarkRun_PepperCipherXORNoise/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/build
-.PHONY : BenchmarkRun_PepperCipherXORNoise/fast
+BenchmarkRun_PepperSubtractCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/build
+.PHONY : BenchmarkRun_PepperSubtractCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PepperXORCipher
+
+# Build rule for target.
+BenchmarkRun_PepperXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperXORCipher
+.PHONY : BenchmarkRun_PepperXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PepperXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperXORCipher.dir/build
+.PHONY : BenchmarkRun_PepperXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PepperJumpXORCipher
+
+# Build rule for target.
+BenchmarkRun_PepperJumpXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperJumpXORCipher
+.PHONY : BenchmarkRun_PepperJumpXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PepperJumpXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/build
+.PHONY : BenchmarkRun_PepperJumpXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PepperNoiseXORCipher
+
+# Build rule for target.
+BenchmarkRun_PepperNoiseXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperNoiseXORCipher
+.PHONY : BenchmarkRun_PepperNoiseXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PepperNoiseXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/build
+.PHONY : BenchmarkRun_PepperNoiseXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PepperJumpNoiseXORCipher
+
+# Build rule for target.
+BenchmarkRun_PepperJumpNoiseXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperJumpNoiseXORCipher
+.PHONY : BenchmarkRun_PepperJumpNoiseXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PepperJumpNoiseXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/build
+.PHONY : BenchmarkRun_PepperJumpNoiseXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_PepperDualJumpNoiseXORCipher
+
+# Build rule for target.
+BenchmarkRun_PepperDualJumpNoiseXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_PepperDualJumpNoiseXORCipher
+.PHONY : BenchmarkRun_PepperDualJumpNoiseXORCipher
+
+# fast build rule for target.
+BenchmarkRun_PepperDualJumpNoiseXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/build
+.PHONY : BenchmarkRun_PepperDualJumpNoiseXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_CascadeXORCipher
+
+# Build rule for target.
+BenchmarkRun_CascadeXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_CascadeXORCipher
+.PHONY : BenchmarkRun_CascadeXORCipher
+
+# fast build rule for target.
+BenchmarkRun_CascadeXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/build
+.PHONY : BenchmarkRun_CascadeXORCipher/fast
+
+#=============================================================================
+# Target rules for targets named BenchmarkRun_CascadeJumpXORCipher
+
+# Build rule for target.
+BenchmarkRun_CascadeJumpXORCipher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BenchmarkRun_CascadeJumpXORCipher
+.PHONY : BenchmarkRun_CascadeJumpXORCipher
+
+# fast build rule for target.
+BenchmarkRun_CascadeJumpXORCipher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/build
+.PHONY : BenchmarkRun_CascadeJumpXORCipher/fast
 
 #=============================================================================
 # Target rules for targets named BenchmarkRun_SwapGridVV16
@@ -1797,6 +2083,54 @@ BENCHMARK/BenchmarkRun_All.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_All.dir/build.make CMakeFiles/BenchmarkRun_All.dir/BENCHMARK/BenchmarkRun_All.cpp.s
 .PHONY : BENCHMARK/BenchmarkRun_All.cpp.s
 
+BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.o: BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.i: BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.s: BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeJumpXORCipher.dir/BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_CascadeXORCipher.o: BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_CascadeXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_CascadeXORCipher.i: BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_CascadeXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_CascadeXORCipher.s: BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_CascadeXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/build.make CMakeFiles/BenchmarkRun_CascadeXORCipher.dir/BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_CascadeXORCipher.cpp.s
+
 BENCHMARK/BenchmarkRun_InvertCipher.o: BENCHMARK/BenchmarkRun_InvertCipher.cpp.o
 .PHONY : BENCHMARK/BenchmarkRun_InvertCipher.o
 
@@ -1845,77 +2179,317 @@ BENCHMARK/BenchmarkRun_InvertMaskCipher.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_InvertMaskCipher.dir/build.make CMakeFiles/BenchmarkRun_InvertMaskCipher.dir/BENCHMARK/BenchmarkRun_InvertMaskCipher.cpp.s
 .PHONY : BENCHMARK/BenchmarkRun_InvertMaskCipher.cpp.s
 
-BENCHMARK/BenchmarkRun_PasswordCipher.o: BENCHMARK/BenchmarkRun_PasswordCipher.cpp.o
-.PHONY : BENCHMARK/BenchmarkRun_PasswordCipher.o
+BENCHMARK/BenchmarkRun_PasswordAddCipher.o: BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordAddCipher.o
 
 # target to build an object file
-BENCHMARK/BenchmarkRun_PasswordCipher.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordCipher.dir/BENCHMARK/BenchmarkRun_PasswordCipher.cpp.o
-.PHONY : BENCHMARK/BenchmarkRun_PasswordCipher.cpp.o
+BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.o
 
-BENCHMARK/BenchmarkRun_PasswordCipher.i: BENCHMARK/BenchmarkRun_PasswordCipher.cpp.i
-.PHONY : BENCHMARK/BenchmarkRun_PasswordCipher.i
+BENCHMARK/BenchmarkRun_PasswordAddCipher.i: BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordAddCipher.i
 
 # target to preprocess a source file
-BENCHMARK/BenchmarkRun_PasswordCipher.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordCipher.dir/BENCHMARK/BenchmarkRun_PasswordCipher.cpp.i
-.PHONY : BENCHMARK/BenchmarkRun_PasswordCipher.cpp.i
+BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.i
 
-BENCHMARK/BenchmarkRun_PasswordCipher.s: BENCHMARK/BenchmarkRun_PasswordCipher.cpp.s
-.PHONY : BENCHMARK/BenchmarkRun_PasswordCipher.s
+BENCHMARK/BenchmarkRun_PasswordAddCipher.s: BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordAddCipher.s
 
 # target to generate assembly for a file
-BENCHMARK/BenchmarkRun_PasswordCipher.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordCipher.dir/BENCHMARK/BenchmarkRun_PasswordCipher.cpp.s
-.PHONY : BENCHMARK/BenchmarkRun_PasswordCipher.cpp.s
+BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordAddCipher.dir/BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordAddCipher.cpp.s
 
-BENCHMARK/BenchmarkRun_PepperCipherXOR.o: BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.o
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXOR.o
+BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.o: BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.o
 
 # target to build an object file
-BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.o
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.o
+BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.o
 
-BENCHMARK/BenchmarkRun_PepperCipherXOR.i: BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.i
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXOR.i
+BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.i: BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.i
 
 # target to preprocess a source file
-BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.i
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.i
+BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.i
 
-BENCHMARK/BenchmarkRun_PepperCipherXOR.s: BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.s
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXOR.s
+BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.s: BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.s
 
 # target to generate assembly for a file
-BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXOR.dir/BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.s
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXOR.cpp.s
+BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpAddCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.cpp.s
 
-BENCHMARK/BenchmarkRun_PepperCipherXORNoise.o: BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.o
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXORNoise.o
+BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.o: BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.o
 
 # target to build an object file
-BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.o
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.o
+BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.o
 
-BENCHMARK/BenchmarkRun_PepperCipherXORNoise.i: BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.i
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXORNoise.i
+BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.i: BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.i
 
 # target to preprocess a source file
-BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.i
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.i
+BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.i
 
-BENCHMARK/BenchmarkRun_PepperCipherXORNoise.s: BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.s
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXORNoise.s
+BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.s: BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.s
 
 # target to generate assembly for a file
-BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/build.make CMakeFiles/BenchmarkRun_PepperCipherXORNoise.dir/BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.s
-.PHONY : BENCHMARK/BenchmarkRun_PepperCipherXORNoise.cpp.s
+BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpSubtractCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.o: BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.i: BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.s: BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordJumpXORCipher.dir/BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PasswordSubtractCipher.o: BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordSubtractCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PasswordSubtractCipher.i: BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordSubtractCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PasswordSubtractCipher.s: BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordSubtractCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordSubtractCipher.dir/BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordSubtractCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PasswordXORCipher.o: BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PasswordXORCipher.i: BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PasswordXORCipher.s: BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PasswordXORCipher.dir/BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PasswordXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperAddCipher.o: BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperAddCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperAddCipher.dir/BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperAddCipher.i: BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperAddCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperAddCipher.dir/BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperAddCipher.s: BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperAddCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperAddCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperAddCipher.dir/BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperAddCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.o: BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.i: BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.s: BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperDualJumpNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.o: BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.i: BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.s: BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperJumpXORCipher.o: BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperJumpXORCipher.i: BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperJumpXORCipher.s: BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperJumpXORCipher.dir/BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperJumpXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.o: BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.i: BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.s: BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperNoiseXORCipher.dir/BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperSubtractCipher.o: BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperSubtractCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperSubtractCipher.i: BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperSubtractCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperSubtractCipher.s: BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperSubtractCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperSubtractCipher.dir/BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperSubtractCipher.cpp.s
+
+BENCHMARK/BenchmarkRun_PepperXORCipher.o: BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperXORCipher.o
+
+# target to build an object file
+BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperXORCipher.dir/BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.o
+.PHONY : BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.o
+
+BENCHMARK/BenchmarkRun_PepperXORCipher.i: BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperXORCipher.i
+
+# target to preprocess a source file
+BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperXORCipher.dir/BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.i
+.PHONY : BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.i
+
+BENCHMARK/BenchmarkRun_PepperXORCipher.s: BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperXORCipher.s
+
+# target to generate assembly for a file
+BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_PepperXORCipher.dir/build.make CMakeFiles/BenchmarkRun_PepperXORCipher.dir/BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.s
+.PHONY : BENCHMARK/BenchmarkRun_PepperXORCipher.cpp.s
 
 BENCHMARK/BenchmarkRun_ReverseBlockByteCipher.o: BENCHMARK/BenchmarkRun_ReverseBlockByteCipher.cpp.o
 .PHONY : BENCHMARK/BenchmarkRun_ReverseBlockByteCipher.o
@@ -3165,6 +3739,30 @@ BENCHMARK/BenchmarkRun_WeaveMaskCipher.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BenchmarkRun_WeaveMaskCipher.dir/build.make CMakeFiles/BenchmarkRun_WeaveMaskCipher.dir/BENCHMARK/BenchmarkRun_WeaveMaskCipher.cpp.s
 .PHONY : BENCHMARK/BenchmarkRun_WeaveMaskCipher.cpp.s
 
+CompatabilityTests.o: CompatabilityTests.cpp.o
+.PHONY : CompatabilityTests.o
+
+# target to build an object file
+CompatabilityTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompatabilityTests.dir/build.make CMakeFiles/CompatabilityTests.dir/CompatabilityTests.cpp.o
+.PHONY : CompatabilityTests.cpp.o
+
+CompatabilityTests.i: CompatabilityTests.cpp.i
+.PHONY : CompatabilityTests.i
+
+# target to preprocess a source file
+CompatabilityTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompatabilityTests.dir/build.make CMakeFiles/CompatabilityTests.dir/CompatabilityTests.cpp.i
+.PHONY : CompatabilityTests.cpp.i
+
+CompatabilityTests.s: CompatabilityTests.cpp.s
+.PHONY : CompatabilityTests.s
+
+# target to generate assembly for a file
+CompatabilityTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompatabilityTests.dir/build.make CMakeFiles/CompatabilityTests.dir/CompatabilityTests.cpp.s
+.PHONY : CompatabilityTests.cpp.s
+
 QuickSmokeTest.o: QuickSmokeTest.cpp.o
 .PHONY : QuickSmokeTest.o
 
@@ -3189,125 +3787,197 @@ QuickSmokeTest.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/QuickSmokeTest.dir/build.make CMakeFiles/QuickSmokeTest.dir/QuickSmokeTest.cpp.s
 .PHONY : QuickSmokeTest.cpp.s
 
-src/Core/EncryptionLayer.o: src/Core/EncryptionLayer.cpp.o
-.PHONY : src/Core/EncryptionLayer.o
+src/Encryption/Crypt.o: src/Encryption/Crypt.cpp.o
+.PHONY : src/Encryption/Crypt.o
 
 # target to build an object file
-src/Core/EncryptionLayer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o
-.PHONY : src/Core/EncryptionLayer.cpp.o
+src/Encryption/Crypt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o
+.PHONY : src/Encryption/Crypt.cpp.o
 
-src/Core/EncryptionLayer.i: src/Core/EncryptionLayer.cpp.i
-.PHONY : src/Core/EncryptionLayer.i
+src/Encryption/Crypt.i: src/Encryption/Crypt.cpp.i
+.PHONY : src/Encryption/Crypt.i
 
 # target to preprocess a source file
-src/Core/EncryptionLayer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.i
-.PHONY : src/Core/EncryptionLayer.cpp.i
+src/Encryption/Crypt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.i
+.PHONY : src/Encryption/Crypt.cpp.i
 
-src/Core/EncryptionLayer.s: src/Core/EncryptionLayer.cpp.s
-.PHONY : src/Core/EncryptionLayer.s
+src/Encryption/Crypt.s: src/Encryption/Crypt.cpp.s
+.PHONY : src/Encryption/Crypt.s
 
 # target to generate assembly for a file
-src/Core/EncryptionLayer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.s
-.PHONY : src/Core/EncryptionLayer.cpp.s
+src/Encryption/Crypt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.s
+.PHONY : src/Encryption/Crypt.cpp.s
 
-src/Core/LayeredCrypt.o: src/Core/LayeredCrypt.cpp.o
-.PHONY : src/Core/LayeredCrypt.o
+src/Encryption/EncryptionLayer.o: src/Encryption/EncryptionLayer.cpp.o
+.PHONY : src/Encryption/EncryptionLayer.o
 
 # target to build an object file
-src/Core/LayeredCrypt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o
-.PHONY : src/Core/LayeredCrypt.cpp.o
+src/Encryption/EncryptionLayer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o
+.PHONY : src/Encryption/EncryptionLayer.cpp.o
 
-src/Core/LayeredCrypt.i: src/Core/LayeredCrypt.cpp.i
-.PHONY : src/Core/LayeredCrypt.i
+src/Encryption/EncryptionLayer.i: src/Encryption/EncryptionLayer.cpp.i
+.PHONY : src/Encryption/EncryptionLayer.i
 
 # target to preprocess a source file
-src/Core/LayeredCrypt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.i
-.PHONY : src/Core/LayeredCrypt.cpp.i
+src/Encryption/EncryptionLayer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.i
+.PHONY : src/Encryption/EncryptionLayer.cpp.i
 
-src/Core/LayeredCrypt.s: src/Core/LayeredCrypt.cpp.s
-.PHONY : src/Core/LayeredCrypt.s
+src/Encryption/EncryptionLayer.s: src/Encryption/EncryptionLayer.cpp.s
+.PHONY : src/Encryption/EncryptionLayer.s
 
 # target to generate assembly for a file
-src/Core/LayeredCrypt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.s
-.PHONY : src/Core/LayeredCrypt.cpp.s
+src/Encryption/EncryptionLayer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.s
+.PHONY : src/Encryption/EncryptionLayer.cpp.s
 
-src/Core/MaskNoiseApplyEngine.o: src/Core/MaskNoiseApplyEngine.cpp.o
-.PHONY : src/Core/MaskNoiseApplyEngine.o
+src/Encryption/LayeredCrypt.o: src/Encryption/LayeredCrypt.cpp.o
+.PHONY : src/Encryption/LayeredCrypt.o
 
 # target to build an object file
-src/Core/MaskNoiseApplyEngine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/src/Core/MaskNoiseApplyEngine.cpp.o
-.PHONY : src/Core/MaskNoiseApplyEngine.cpp.o
+src/Encryption/LayeredCrypt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o
+.PHONY : src/Encryption/LayeredCrypt.cpp.o
 
-src/Core/MaskNoiseApplyEngine.i: src/Core/MaskNoiseApplyEngine.cpp.i
-.PHONY : src/Core/MaskNoiseApplyEngine.i
+src/Encryption/LayeredCrypt.i: src/Encryption/LayeredCrypt.cpp.i
+.PHONY : src/Encryption/LayeredCrypt.i
 
 # target to preprocess a source file
-src/Core/MaskNoiseApplyEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/src/Core/MaskNoiseApplyEngine.cpp.i
-.PHONY : src/Core/MaskNoiseApplyEngine.cpp.i
+src/Encryption/LayeredCrypt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.i
+.PHONY : src/Encryption/LayeredCrypt.cpp.i
 
-src/Core/MaskNoiseApplyEngine.s: src/Core/MaskNoiseApplyEngine.cpp.s
-.PHONY : src/Core/MaskNoiseApplyEngine.s
+src/Encryption/LayeredCrypt.s: src/Encryption/LayeredCrypt.cpp.s
+.PHONY : src/Encryption/LayeredCrypt.s
 
 # target to generate assembly for a file
-src/Core/MaskNoiseApplyEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/src/Core/MaskNoiseApplyEngine.cpp.s
-.PHONY : src/Core/MaskNoiseApplyEngine.cpp.s
+src/Encryption/LayeredCrypt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.s
+.PHONY : src/Encryption/LayeredCrypt.cpp.s
 
-src/Core/MaskedPassword.o: src/Core/MaskedPassword.cpp.o
-.PHONY : src/Core/MaskedPassword.o
+src/Encryption/MaskLibrary.o: src/Encryption/MaskLibrary.cpp.o
+.PHONY : src/Encryption/MaskLibrary.o
 
 # target to build an object file
-src/Core/MaskedPassword.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/masked_password.dir/build.make CMakeFiles/masked_password.dir/src/Core/MaskedPassword.cpp.o
-.PHONY : src/Core/MaskedPassword.cpp.o
+src/Encryption/MaskLibrary.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o
+.PHONY : src/Encryption/MaskLibrary.cpp.o
 
-src/Core/MaskedPassword.i: src/Core/MaskedPassword.cpp.i
-.PHONY : src/Core/MaskedPassword.i
+src/Encryption/MaskLibrary.i: src/Encryption/MaskLibrary.cpp.i
+.PHONY : src/Encryption/MaskLibrary.i
 
 # target to preprocess a source file
-src/Core/MaskedPassword.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/masked_password.dir/build.make CMakeFiles/masked_password.dir/src/Core/MaskedPassword.cpp.i
-.PHONY : src/Core/MaskedPassword.cpp.i
+src/Encryption/MaskLibrary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.i
+.PHONY : src/Encryption/MaskLibrary.cpp.i
 
-src/Core/MaskedPassword.s: src/Core/MaskedPassword.cpp.s
-.PHONY : src/Core/MaskedPassword.s
+src/Encryption/MaskLibrary.s: src/Encryption/MaskLibrary.cpp.s
+.PHONY : src/Encryption/MaskLibrary.s
 
 # target to generate assembly for a file
-src/Core/MaskedPassword.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/masked_password.dir/build.make CMakeFiles/masked_password.dir/src/Core/MaskedPassword.cpp.s
-.PHONY : src/Core/MaskedPassword.cpp.s
+src/Encryption/MaskLibrary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.s
+.PHONY : src/Encryption/MaskLibrary.cpp.s
 
-src/Core/SampleMixer.o: src/Core/SampleMixer.cpp.o
-.PHONY : src/Core/SampleMixer.o
+src/Encryption/PassthroughCrypt.o: src/Encryption/PassthroughCrypt.cpp.o
+.PHONY : src/Encryption/PassthroughCrypt.o
 
 # target to build an object file
-src/Core/SampleMixer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/src/Core/SampleMixer.cpp.o
-.PHONY : src/Core/SampleMixer.cpp.o
+src/Encryption/PassthroughCrypt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o
+.PHONY : src/Encryption/PassthroughCrypt.cpp.o
 
-src/Core/SampleMixer.i: src/Core/SampleMixer.cpp.i
-.PHONY : src/Core/SampleMixer.i
+src/Encryption/PassthroughCrypt.i: src/Encryption/PassthroughCrypt.cpp.i
+.PHONY : src/Encryption/PassthroughCrypt.i
 
 # target to preprocess a source file
-src/Core/SampleMixer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/src/Core/SampleMixer.cpp.i
-.PHONY : src/Core/SampleMixer.cpp.i
+src/Encryption/PassthroughCrypt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.i
+.PHONY : src/Encryption/PassthroughCrypt.cpp.i
 
-src/Core/SampleMixer.s: src/Core/SampleMixer.cpp.s
-.PHONY : src/Core/SampleMixer.s
+src/Encryption/PassthroughCrypt.s: src/Encryption/PassthroughCrypt.cpp.s
+.PHONY : src/Encryption/PassthroughCrypt.s
 
 # target to generate assembly for a file
-src/Core/SampleMixer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mask_noise_apply.dir/build.make CMakeFiles/mask_noise_apply.dir/src/Core/SampleMixer.cpp.s
-.PHONY : src/Core/SampleMixer.cpp.s
+src/Encryption/PassthroughCrypt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/layered_crypt.dir/build.make CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.s
+.PHONY : src/Encryption/PassthroughCrypt.cpp.s
+
+src/Tables/Tables.o: src/Tables/Tables.cpp.o
+.PHONY : src/Tables/Tables.o
+
+# target to build an object file
+src/Tables/Tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/peanut_tables.dir/build.make CMakeFiles/peanut_tables.dir/src/Tables/Tables.cpp.o
+.PHONY : src/Tables/Tables.cpp.o
+
+src/Tables/Tables.i: src/Tables/Tables.cpp.i
+.PHONY : src/Tables/Tables.i
+
+# target to preprocess a source file
+src/Tables/Tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/peanut_tables.dir/build.make CMakeFiles/peanut_tables.dir/src/Tables/Tables.cpp.i
+.PHONY : src/Tables/Tables.cpp.i
+
+src/Tables/Tables.s: src/Tables/Tables.cpp.s
+.PHONY : src/Tables/Tables.s
+
+# target to generate assembly for a file
+src/Tables/Tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/peanut_tables.dir/build.make CMakeFiles/peanut_tables.dir/src/Tables/Tables.cpp.s
+.PHONY : src/Tables/Tables.cpp.s
+
+tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.o: tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.i: tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.s: tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/CascadeXORCipher_TestBrew.o: tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/CascadeXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeXORCipher_TestBrew.dir/tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/CascadeXORCipher_TestBrew.i: tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/CascadeXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeXORCipher_TestBrew.dir/tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/CascadeXORCipher_TestBrew.s: tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/CascadeXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CascadeXORCipher_TestBrew.dir/build.make CMakeFiles/CascadeXORCipher_TestBrew.dir/tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/CascadeXORCipher_TestBrew.cpp.s
 
 tests_brew/Ciphers/InvertCipher_TestBrew.o: tests_brew/Ciphers/InvertCipher_TestBrew.cpp.o
 .PHONY : tests_brew/Ciphers/InvertCipher_TestBrew.o
@@ -3357,77 +4027,317 @@ tests_brew/Ciphers/InvertMaskCipher_TestBrew.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/InvertMaskCipher_TestBrew.dir/build.make CMakeFiles/InvertMaskCipher_TestBrew.dir/tests_brew/Ciphers/InvertMaskCipher_TestBrew.cpp.s
 .PHONY : tests_brew/Ciphers/InvertMaskCipher_TestBrew.cpp.s
 
-tests_brew/Ciphers/PasswordCipher_TestBrew.o: tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.o
-.PHONY : tests_brew/Ciphers/PasswordCipher_TestBrew.o
+tests_brew/Ciphers/PasswordAddCipher_TestBrew.o: tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordAddCipher_TestBrew.o
 
 # target to build an object file
-tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordCipher_TestBrew.dir/build.make CMakeFiles/PasswordCipher_TestBrew.dir/tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.o
-.PHONY : tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.o
+tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordAddCipher_TestBrew.dir/tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.o
 
-tests_brew/Ciphers/PasswordCipher_TestBrew.i: tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.i
-.PHONY : tests_brew/Ciphers/PasswordCipher_TestBrew.i
+tests_brew/Ciphers/PasswordAddCipher_TestBrew.i: tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordAddCipher_TestBrew.i
 
 # target to preprocess a source file
-tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordCipher_TestBrew.dir/build.make CMakeFiles/PasswordCipher_TestBrew.dir/tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.i
-.PHONY : tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.i
+tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordAddCipher_TestBrew.dir/tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.i
 
-tests_brew/Ciphers/PasswordCipher_TestBrew.s: tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.s
-.PHONY : tests_brew/Ciphers/PasswordCipher_TestBrew.s
+tests_brew/Ciphers/PasswordAddCipher_TestBrew.s: tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordAddCipher_TestBrew.s
 
 # target to generate assembly for a file
-tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordCipher_TestBrew.dir/build.make CMakeFiles/PasswordCipher_TestBrew.dir/tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.s
-.PHONY : tests_brew/Ciphers/PasswordCipher_TestBrew.cpp.s
+tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordAddCipher_TestBrew.dir/tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordAddCipher_TestBrew.cpp.s
 
-tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.o: tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.o
-.PHONY : tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.o
+tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.o: tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.o
 
 # target to build an object file
-tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXORNoise_TestBrew.dir/build.make CMakeFiles/PepperCipherXORNoise_TestBrew.dir/tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.o
-.PHONY : tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.o
+tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.o
 
-tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.i: tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.i
-.PHONY : tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.i
+tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.i: tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.i
 
 # target to preprocess a source file
-tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXORNoise_TestBrew.dir/build.make CMakeFiles/PepperCipherXORNoise_TestBrew.dir/tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.i
-.PHONY : tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.i
+tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.i
 
-tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.s: tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.s
-.PHONY : tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.s
+tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.s: tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.s
 
 # target to generate assembly for a file
-tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXORNoise_TestBrew.dir/build.make CMakeFiles/PepperCipherXORNoise_TestBrew.dir/tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.s
-.PHONY : tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.cpp.s
+tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpAddCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.cpp.s
 
-tests_brew/Ciphers/PepperCipherXOR_TestBrew.o: tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.o
-.PHONY : tests_brew/Ciphers/PepperCipherXOR_TestBrew.o
+tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.o: tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.o
 
 # target to build an object file
-tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXOR_TestBrew.dir/build.make CMakeFiles/PepperCipherXOR_TestBrew.dir/tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.o
-.PHONY : tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.o
+tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.o
 
-tests_brew/Ciphers/PepperCipherXOR_TestBrew.i: tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.i
-.PHONY : tests_brew/Ciphers/PepperCipherXOR_TestBrew.i
+tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.i: tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.i
 
 # target to preprocess a source file
-tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXOR_TestBrew.dir/build.make CMakeFiles/PepperCipherXOR_TestBrew.dir/tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.i
-.PHONY : tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.i
+tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.i
 
-tests_brew/Ciphers/PepperCipherXOR_TestBrew.s: tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.s
-.PHONY : tests_brew/Ciphers/PepperCipherXOR_TestBrew.s
+tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.s: tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.s
 
 # target to generate assembly for a file
-tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperCipherXOR_TestBrew.dir/build.make CMakeFiles/PepperCipherXOR_TestBrew.dir/tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.s
-.PHONY : tests_brew/Ciphers/PepperCipherXOR_TestBrew.cpp.s
+tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.o: tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.i: tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.s: tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.o: tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.i: tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.s: tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordSubtractCipher_TestBrew.dir/build.make CMakeFiles/PasswordSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PasswordXORCipher_TestBrew.o: tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordXORCipher_TestBrew.dir/tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PasswordXORCipher_TestBrew.i: tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordXORCipher_TestBrew.dir/tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PasswordXORCipher_TestBrew.s: tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PasswordXORCipher_TestBrew.dir/build.make CMakeFiles/PasswordXORCipher_TestBrew.dir/tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PasswordXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperAddCipher_TestBrew.o: tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperAddCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperAddCipher_TestBrew.dir/build.make CMakeFiles/PepperAddCipher_TestBrew.dir/tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperAddCipher_TestBrew.i: tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperAddCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperAddCipher_TestBrew.dir/build.make CMakeFiles/PepperAddCipher_TestBrew.dir/tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperAddCipher_TestBrew.s: tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperAddCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperAddCipher_TestBrew.dir/build.make CMakeFiles/PepperAddCipher_TestBrew.dir/tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperAddCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.o: tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.i: tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.s: tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperDualJumpNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.o: tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.i: tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.s: tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.o: tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.i: tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.s: tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperJumpXORCipher_TestBrew.dir/build.make CMakeFiles/PepperJumpXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.o: tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.i: tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.s: tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/build.make CMakeFiles/PepperNoiseXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperSubtractCipher_TestBrew.o: tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperSubtractCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperSubtractCipher_TestBrew.dir/build.make CMakeFiles/PepperSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperSubtractCipher_TestBrew.i: tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperSubtractCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperSubtractCipher_TestBrew.dir/build.make CMakeFiles/PepperSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperSubtractCipher_TestBrew.s: tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperSubtractCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperSubtractCipher_TestBrew.dir/build.make CMakeFiles/PepperSubtractCipher_TestBrew.dir/tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperSubtractCipher_TestBrew.cpp.s
+
+tests_brew/Ciphers/PepperXORCipher_TestBrew.o: tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperXORCipher_TestBrew.o
+
+# target to build an object file
+tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperXORCipher_TestBrew.dir/build.make CMakeFiles/PepperXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.o
+.PHONY : tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.o
+
+tests_brew/Ciphers/PepperXORCipher_TestBrew.i: tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperXORCipher_TestBrew.i
+
+# target to preprocess a source file
+tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperXORCipher_TestBrew.dir/build.make CMakeFiles/PepperXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.i
+.PHONY : tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.i
+
+tests_brew/Ciphers/PepperXORCipher_TestBrew.s: tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperXORCipher_TestBrew.s
+
+# target to generate assembly for a file
+tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/PepperXORCipher_TestBrew.dir/build.make CMakeFiles/PepperXORCipher_TestBrew.dir/tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.s
+.PHONY : tests_brew/Ciphers/PepperXORCipher_TestBrew.cpp.s
 
 tests_brew/Ciphers/ReverseBlockByteCipher_TestBrew.o: tests_brew/Ciphers/ReverseBlockByteCipher_TestBrew.cpp.o
 .PHONY : tests_brew/Ciphers/ReverseBlockByteCipher_TestBrew.o
@@ -4725,54 +5635,6 @@ tests_brew/TestBrewGenerator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_brew_support.dir/build.make CMakeFiles/test_brew_support.dir/tests_brew/TestBrewGenerator.cpp.s
 .PHONY : tests_brew/TestBrewGenerator.cpp.s
 
-tests_brew/TestMaskNoiseApplyEngine.o: tests_brew/TestMaskNoiseApplyEngine.cpp.o
-.PHONY : tests_brew/TestMaskNoiseApplyEngine.o
-
-# target to build an object file
-tests_brew/TestMaskNoiseApplyEngine.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskNoiseApplyEngine.dir/build.make CMakeFiles/TestMaskNoiseApplyEngine.dir/tests_brew/TestMaskNoiseApplyEngine.cpp.o
-.PHONY : tests_brew/TestMaskNoiseApplyEngine.cpp.o
-
-tests_brew/TestMaskNoiseApplyEngine.i: tests_brew/TestMaskNoiseApplyEngine.cpp.i
-.PHONY : tests_brew/TestMaskNoiseApplyEngine.i
-
-# target to preprocess a source file
-tests_brew/TestMaskNoiseApplyEngine.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskNoiseApplyEngine.dir/build.make CMakeFiles/TestMaskNoiseApplyEngine.dir/tests_brew/TestMaskNoiseApplyEngine.cpp.i
-.PHONY : tests_brew/TestMaskNoiseApplyEngine.cpp.i
-
-tests_brew/TestMaskNoiseApplyEngine.s: tests_brew/TestMaskNoiseApplyEngine.cpp.s
-.PHONY : tests_brew/TestMaskNoiseApplyEngine.s
-
-# target to generate assembly for a file
-tests_brew/TestMaskNoiseApplyEngine.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskNoiseApplyEngine.dir/build.make CMakeFiles/TestMaskNoiseApplyEngine.dir/tests_brew/TestMaskNoiseApplyEngine.cpp.s
-.PHONY : tests_brew/TestMaskNoiseApplyEngine.cpp.s
-
-tests_brew/TestMaskedPassword.o: tests_brew/TestMaskedPassword.cpp.o
-.PHONY : tests_brew/TestMaskedPassword.o
-
-# target to build an object file
-tests_brew/TestMaskedPassword.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskedPassword.dir/build.make CMakeFiles/TestMaskedPassword.dir/tests_brew/TestMaskedPassword.cpp.o
-.PHONY : tests_brew/TestMaskedPassword.cpp.o
-
-tests_brew/TestMaskedPassword.i: tests_brew/TestMaskedPassword.cpp.i
-.PHONY : tests_brew/TestMaskedPassword.i
-
-# target to preprocess a source file
-tests_brew/TestMaskedPassword.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskedPassword.dir/build.make CMakeFiles/TestMaskedPassword.dir/tests_brew/TestMaskedPassword.cpp.i
-.PHONY : tests_brew/TestMaskedPassword.cpp.i
-
-tests_brew/TestMaskedPassword.s: tests_brew/TestMaskedPassword.cpp.s
-.PHONY : tests_brew/TestMaskedPassword.s
-
-# target to generate assembly for a file
-tests_brew/TestMaskedPassword.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TestMaskedPassword.dir/build.make CMakeFiles/TestMaskedPassword.dir/tests_brew/TestMaskedPassword.cpp.s
-.PHONY : tests_brew/TestMaskedPassword.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -4783,11 +5645,23 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... BenchmarkRun_All"
+	@echo "... BenchmarkRun_CascadeJumpXORCipher"
+	@echo "... BenchmarkRun_CascadeXORCipher"
 	@echo "... BenchmarkRun_InvertCipher"
 	@echo "... BenchmarkRun_InvertMaskCipher"
-	@echo "... BenchmarkRun_PasswordCipher"
-	@echo "... BenchmarkRun_PepperCipherXOR"
-	@echo "... BenchmarkRun_PepperCipherXORNoise"
+	@echo "... BenchmarkRun_PasswordAddCipher"
+	@echo "... BenchmarkRun_PasswordJumpAddCipher"
+	@echo "... BenchmarkRun_PasswordJumpSubtractCipher"
+	@echo "... BenchmarkRun_PasswordJumpXORCipher"
+	@echo "... BenchmarkRun_PasswordSubtractCipher"
+	@echo "... BenchmarkRun_PasswordXORCipher"
+	@echo "... BenchmarkRun_PepperAddCipher"
+	@echo "... BenchmarkRun_PepperDualJumpNoiseXORCipher"
+	@echo "... BenchmarkRun_PepperJumpNoiseXORCipher"
+	@echo "... BenchmarkRun_PepperJumpXORCipher"
+	@echo "... BenchmarkRun_PepperNoiseXORCipher"
+	@echo "... BenchmarkRun_PepperSubtractCipher"
+	@echo "... BenchmarkRun_PepperXORCipher"
 	@echo "... BenchmarkRun_ReverseBlockByteCipher"
 	@echo "... BenchmarkRun_ReverseBlockCipher"
 	@echo "... BenchmarkRun_ReverseCipher"
@@ -4840,11 +5714,24 @@ help:
 	@echo "... BenchmarkRun_WeaveMaskBlockCipher"
 	@echo "... BenchmarkRun_WeaveMaskByteBlockCipher"
 	@echo "... BenchmarkRun_WeaveMaskCipher"
+	@echo "... CascadeJumpXORCipher_TestBrew"
+	@echo "... CascadeXORCipher_TestBrew"
+	@echo "... CompatabilityTests"
 	@echo "... InvertCipher_TestBrew"
 	@echo "... InvertMaskCipher_TestBrew"
-	@echo "... PasswordCipher_TestBrew"
-	@echo "... PepperCipherXORNoise_TestBrew"
-	@echo "... PepperCipherXOR_TestBrew"
+	@echo "... PasswordAddCipher_TestBrew"
+	@echo "... PasswordJumpAddCipher_TestBrew"
+	@echo "... PasswordJumpSubtractCipher_TestBrew"
+	@echo "... PasswordJumpXORCipher_TestBrew"
+	@echo "... PasswordSubtractCipher_TestBrew"
+	@echo "... PasswordXORCipher_TestBrew"
+	@echo "... PepperAddCipher_TestBrew"
+	@echo "... PepperDualJumpNoiseXORCipher_TestBrew"
+	@echo "... PepperJumpNoiseXORCipher_TestBrew"
+	@echo "... PepperJumpXORCipher_TestBrew"
+	@echo "... PepperNoiseXORCipher_TestBrew"
+	@echo "... PepperSubtractCipher_TestBrew"
+	@echo "... PepperXORCipher_TestBrew"
 	@echo "... QuickSmokeTest"
 	@echo "... ReverseBlockByteCipher_TestBrew"
 	@echo "... ReverseBlockCipher_TestBrew"
@@ -4892,8 +5779,6 @@ help:
 	@echo "... SwapGridVH64_TestBrew"
 	@echo "... SwapGridVV16_TestBrew"
 	@echo "... SwapGridVV64_TestBrew"
-	@echo "... TestMaskNoiseApplyEngine"
-	@echo "... TestMaskedPassword"
 	@echo "... WeaveBlockCipher_TestBrew"
 	@echo "... WeaveByteBlockCipher_TestBrew"
 	@echo "... WeaveCipher_TestBrew"
@@ -4902,8 +5787,7 @@ help:
 	@echo "... WeaveMaskCipher_TestBrew"
 	@echo "... benchmark_support"
 	@echo "... layered_crypt"
-	@echo "... mask_noise_apply"
-	@echo "... masked_password"
+	@echo "... peanut_tables"
 	@echo "... test_brew_support"
 	@echo "... BENCHMARK/BenchmarkBlockExecutor.o"
 	@echo "... BENCHMARK/BenchmarkBlockExecutor.i"
@@ -4914,21 +5798,57 @@ help:
 	@echo "... BENCHMARK/BenchmarkRun_All.o"
 	@echo "... BENCHMARK/BenchmarkRun_All.i"
 	@echo "... BENCHMARK/BenchmarkRun_All.s"
+	@echo "... BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_CascadeJumpXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_CascadeXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_CascadeXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_CascadeXORCipher.s"
 	@echo "... BENCHMARK/BenchmarkRun_InvertCipher.o"
 	@echo "... BENCHMARK/BenchmarkRun_InvertCipher.i"
 	@echo "... BENCHMARK/BenchmarkRun_InvertCipher.s"
 	@echo "... BENCHMARK/BenchmarkRun_InvertMaskCipher.o"
 	@echo "... BENCHMARK/BenchmarkRun_InvertMaskCipher.i"
 	@echo "... BENCHMARK/BenchmarkRun_InvertMaskCipher.s"
-	@echo "... BENCHMARK/BenchmarkRun_PasswordCipher.o"
-	@echo "... BENCHMARK/BenchmarkRun_PasswordCipher.i"
-	@echo "... BENCHMARK/BenchmarkRun_PasswordCipher.s"
-	@echo "... BENCHMARK/BenchmarkRun_PepperCipherXOR.o"
-	@echo "... BENCHMARK/BenchmarkRun_PepperCipherXOR.i"
-	@echo "... BENCHMARK/BenchmarkRun_PepperCipherXOR.s"
-	@echo "... BENCHMARK/BenchmarkRun_PepperCipherXORNoise.o"
-	@echo "... BENCHMARK/BenchmarkRun_PepperCipherXORNoise.i"
-	@echo "... BENCHMARK/BenchmarkRun_PepperCipherXORNoise.s"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordAddCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordAddCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordAddCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpAddCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpSubtractCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordJumpXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordSubtractCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordSubtractCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordSubtractCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PasswordXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperAddCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperAddCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperAddCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperDualJumpNoiseXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperJumpNoiseXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperJumpXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperJumpXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperJumpXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperNoiseXORCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperSubtractCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperSubtractCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperSubtractCipher.s"
+	@echo "... BENCHMARK/BenchmarkRun_PepperXORCipher.o"
+	@echo "... BENCHMARK/BenchmarkRun_PepperXORCipher.i"
+	@echo "... BENCHMARK/BenchmarkRun_PepperXORCipher.s"
 	@echo "... BENCHMARK/BenchmarkRun_ReverseBlockByteCipher.o"
 	@echo "... BENCHMARK/BenchmarkRun_ReverseBlockByteCipher.i"
 	@echo "... BENCHMARK/BenchmarkRun_ReverseBlockByteCipher.s"
@@ -5085,39 +6005,81 @@ help:
 	@echo "... BENCHMARK/BenchmarkRun_WeaveMaskCipher.o"
 	@echo "... BENCHMARK/BenchmarkRun_WeaveMaskCipher.i"
 	@echo "... BENCHMARK/BenchmarkRun_WeaveMaskCipher.s"
+	@echo "... CompatabilityTests.o"
+	@echo "... CompatabilityTests.i"
+	@echo "... CompatabilityTests.s"
 	@echo "... QuickSmokeTest.o"
 	@echo "... QuickSmokeTest.i"
 	@echo "... QuickSmokeTest.s"
-	@echo "... src/Core/EncryptionLayer.o"
-	@echo "... src/Core/EncryptionLayer.i"
-	@echo "... src/Core/EncryptionLayer.s"
-	@echo "... src/Core/LayeredCrypt.o"
-	@echo "... src/Core/LayeredCrypt.i"
-	@echo "... src/Core/LayeredCrypt.s"
-	@echo "... src/Core/MaskNoiseApplyEngine.o"
-	@echo "... src/Core/MaskNoiseApplyEngine.i"
-	@echo "... src/Core/MaskNoiseApplyEngine.s"
-	@echo "... src/Core/MaskedPassword.o"
-	@echo "... src/Core/MaskedPassword.i"
-	@echo "... src/Core/MaskedPassword.s"
-	@echo "... src/Core/SampleMixer.o"
-	@echo "... src/Core/SampleMixer.i"
-	@echo "... src/Core/SampleMixer.s"
+	@echo "... src/Encryption/Crypt.o"
+	@echo "... src/Encryption/Crypt.i"
+	@echo "... src/Encryption/Crypt.s"
+	@echo "... src/Encryption/EncryptionLayer.o"
+	@echo "... src/Encryption/EncryptionLayer.i"
+	@echo "... src/Encryption/EncryptionLayer.s"
+	@echo "... src/Encryption/LayeredCrypt.o"
+	@echo "... src/Encryption/LayeredCrypt.i"
+	@echo "... src/Encryption/LayeredCrypt.s"
+	@echo "... src/Encryption/MaskLibrary.o"
+	@echo "... src/Encryption/MaskLibrary.i"
+	@echo "... src/Encryption/MaskLibrary.s"
+	@echo "... src/Encryption/PassthroughCrypt.o"
+	@echo "... src/Encryption/PassthroughCrypt.i"
+	@echo "... src/Encryption/PassthroughCrypt.s"
+	@echo "... src/Tables/Tables.o"
+	@echo "... src/Tables/Tables.i"
+	@echo "... src/Tables/Tables.s"
+	@echo "... tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/CascadeJumpXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/CascadeXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/CascadeXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/CascadeXORCipher_TestBrew.s"
 	@echo "... tests_brew/Ciphers/InvertCipher_TestBrew.o"
 	@echo "... tests_brew/Ciphers/InvertCipher_TestBrew.i"
 	@echo "... tests_brew/Ciphers/InvertCipher_TestBrew.s"
 	@echo "... tests_brew/Ciphers/InvertMaskCipher_TestBrew.o"
 	@echo "... tests_brew/Ciphers/InvertMaskCipher_TestBrew.i"
 	@echo "... tests_brew/Ciphers/InvertMaskCipher_TestBrew.s"
-	@echo "... tests_brew/Ciphers/PasswordCipher_TestBrew.o"
-	@echo "... tests_brew/Ciphers/PasswordCipher_TestBrew.i"
-	@echo "... tests_brew/Ciphers/PasswordCipher_TestBrew.s"
-	@echo "... tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.o"
-	@echo "... tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.i"
-	@echo "... tests_brew/Ciphers/PepperCipherXORNoise_TestBrew.s"
-	@echo "... tests_brew/Ciphers/PepperCipherXOR_TestBrew.o"
-	@echo "... tests_brew/Ciphers/PepperCipherXOR_TestBrew.i"
-	@echo "... tests_brew/Ciphers/PepperCipherXOR_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PasswordAddCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PasswordAddCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PasswordAddCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PasswordJumpAddCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PasswordJumpSubtractCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PasswordJumpXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PasswordSubtractCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PasswordXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PasswordXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PasswordXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperAddCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperAddCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperAddCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperDualJumpNoiseXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperJumpNoiseXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperJumpXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperNoiseXORCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperSubtractCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperSubtractCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperSubtractCipher_TestBrew.s"
+	@echo "... tests_brew/Ciphers/PepperXORCipher_TestBrew.o"
+	@echo "... tests_brew/Ciphers/PepperXORCipher_TestBrew.i"
+	@echo "... tests_brew/Ciphers/PepperXORCipher_TestBrew.s"
 	@echo "... tests_brew/Ciphers/ReverseBlockByteCipher_TestBrew.o"
 	@echo "... tests_brew/Ciphers/ReverseBlockByteCipher_TestBrew.i"
 	@echo "... tests_brew/Ciphers/ReverseBlockByteCipher_TestBrew.s"
@@ -5280,12 +6242,6 @@ help:
 	@echo "... tests_brew/TestBrewGenerator.o"
 	@echo "... tests_brew/TestBrewGenerator.i"
 	@echo "... tests_brew/TestBrewGenerator.s"
-	@echo "... tests_brew/TestMaskNoiseApplyEngine.o"
-	@echo "... tests_brew/TestMaskNoiseApplyEngine.i"
-	@echo "... tests_brew/TestMaskNoiseApplyEngine.s"
-	@echo "... tests_brew/TestMaskedPassword.o"
-	@echo "... tests_brew/TestMaskedPassword.i"
-	@echo "... tests_brew/TestMaskedPassword.s"
 .PHONY : help
 
 

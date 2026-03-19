@@ -1,11 +1,11 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/SpiralGrid/SpiralGridH16.hpp"
+#include "../src/Encryption/Ciphers/SpiralGrid/SpiralGridH16.hpp"
 
 int main() {
-  return jelly::benchmark::RunFlatBenchmark(
-      "spiral_grid_h_16", [](std::size_t, jelly::CryptMode) {
-        return std::make_unique<jelly::SpiralGridH16>(2);
+  return peanutbutter::benchmark::RunFlatBenchmark(
+      "spiral_grid_h_16", [](std::size_t, peanutbutter::CryptMode) {
+        return std::make_unique<peanutbutter::SpiralGridH16>(2);
       });
 }
 

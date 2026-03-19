@@ -1,46 +1,46 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Rotation/RotateMaskBlockCipher.hpp"
+#include "../src/Encryption/Ciphers/Rotation/RotateMaskBlockCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunForEveryBlockSize(
+  return peanutbutter::benchmark::RunForEveryBlockSize(
       "rotation_mask_block", [](int pBlockSize, const std::string& pStem) {
-        return jelly::benchmark::RunBlockBenchmark(
+        return peanutbutter::benchmark::RunBlockBenchmark(
             pStem, pBlockSize,
-            [pBlockSize](int, std::size_t, jelly::CryptMode) {
+            [pBlockSize](int, std::size_t, peanutbutter::CryptMode) {
               switch (pBlockSize) {
-                case jelly::EB_BLOCK_SIZE_08:
-                  return std::unique_ptr<jelly::Crypt>(
+                case 8:
+                  return std::unique_ptr<peanutbutter::Crypt>(
                       std::make_unique<
-                          jelly::RotateMaskBlockCipher<jelly::EB_BLOCK_SIZE_08>>(
+                          peanutbutter::RotateMaskBlockCipher<8>>(
                           0xDEu, -16));
-                case jelly::EB_BLOCK_SIZE_12:
-                  return std::unique_ptr<jelly::Crypt>(
+                case 12:
+                  return std::unique_ptr<peanutbutter::Crypt>(
                       std::make_unique<
-                          jelly::RotateMaskBlockCipher<jelly::EB_BLOCK_SIZE_12>>(
+                          peanutbutter::RotateMaskBlockCipher<12>>(
                           0xDEu, -16));
-                case jelly::EB_BLOCK_SIZE_16:
-                  return std::unique_ptr<jelly::Crypt>(
+                case 16:
+                  return std::unique_ptr<peanutbutter::Crypt>(
                       std::make_unique<
-                          jelly::RotateMaskBlockCipher<jelly::EB_BLOCK_SIZE_16>>(
+                          peanutbutter::RotateMaskBlockCipher<16>>(
                           0xDEu, -16));
-                case jelly::EB_BLOCK_SIZE_24:
-                  return std::unique_ptr<jelly::Crypt>(
+                case 24:
+                  return std::unique_ptr<peanutbutter::Crypt>(
                       std::make_unique<
-                          jelly::RotateMaskBlockCipher<jelly::EB_BLOCK_SIZE_24>>(
+                          peanutbutter::RotateMaskBlockCipher<24>>(
                           0xDEu, -16));
-                case jelly::EB_BLOCK_SIZE_32:
-                  return std::unique_ptr<jelly::Crypt>(
+                case 32:
+                  return std::unique_ptr<peanutbutter::Crypt>(
                       std::make_unique<
-                          jelly::RotateMaskBlockCipher<jelly::EB_BLOCK_SIZE_32>>(
+                          peanutbutter::RotateMaskBlockCipher<32>>(
                           0xDEu, -16));
-                case jelly::EB_BLOCK_SIZE_48:
-                  return std::unique_ptr<jelly::Crypt>(
+                case 48:
+                  return std::unique_ptr<peanutbutter::Crypt>(
                       std::make_unique<
-                          jelly::RotateMaskBlockCipher<jelly::EB_BLOCK_SIZE_48>>(
+                          peanutbutter::RotateMaskBlockCipher<48>>(
                           0xDEu, -16));
               }
-              return std::unique_ptr<jelly::Crypt>();
+              return std::unique_ptr<peanutbutter::Crypt>();
             });
       });
 }

@@ -10,13 +10,18 @@
 #define DISCARD_HI 25
 #define DISCARD_LO 25
 
-namespace jelly::benchmark {
+namespace peanutbutter::benchmark {
 
 bool BenchmarkFlat(const CipherFactory& pFactory,
                    std::size_t pDataLength,
                    const std::string& pOutputFile,
                    std::string* pError = nullptr);
 
-}  // namespace jelly::benchmark
+bool BenchmarkFlat(const SizedCipherFactory& pFactory,
+                   std::size_t pDataLength,
+                   const std::string& pOutputFile,
+                   std::string* pError = nullptr);
+
+}  // namespace peanutbutter::benchmark
 
 #endif  // JELLY_BENCHMARK_BENCHMARK_FLAT_EXECUTOR_HPP_

@@ -96,7 +96,6 @@ QuickSmokeTest_EXTERNAL_OBJECTS =
 QuickSmokeTest: CMakeFiles/QuickSmokeTest.dir/QuickSmokeTest.cpp.o
 QuickSmokeTest: CMakeFiles/QuickSmokeTest.dir/build.make
 QuickSmokeTest: liblayered_crypt.a
-QuickSmokeTest: libmask_noise_apply.a
 QuickSmokeTest: CMakeFiles/QuickSmokeTest.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable QuickSmokeTest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/QuickSmokeTest.dir/link.txt --verbose=$(VERBOSE)

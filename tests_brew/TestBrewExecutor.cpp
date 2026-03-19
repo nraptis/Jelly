@@ -8,10 +8,10 @@
 #include <string>
 #include <vector>
 
-#include "../src/Jelly.hpp"
+#include "../src/PeanutButter.hpp"
 #include "TestBrewGenerator.hpp"
 
-namespace jelly {
+namespace peanutbutter {
 
 namespace {
 
@@ -112,7 +112,7 @@ bool RunRoundTripCase(const CipherFactory& pFactory,
                       std::size_t pCaseIndex,
                       const std::vector<unsigned char>& pInput,
                       std::string* pError) {
-  if ((pInput.size() % SB_CIPHER_LENGTH_GRANULARITY) != 0) {
+  if ((pInput.size() % BLOCK_GRANULARITY) != 0) {
     SetError(pError, pName + " failed in " + pBucket + " at case " +
                          std::to_string(pCaseIndex) +
                          ": input length is not a multiple of 192");
@@ -170,6 +170,71 @@ bool RunRoundTripCase(const CipherFactory& pFactory,
   return true;
 }
 
+bool RunRoundTripCase(const SizedCipherFactory& pFactory,
+                      const std::string& pName,
+                      const std::string& pBucket,
+                      std::size_t pCaseIndex,
+                      const std::vector<unsigned char>& pInput,
+                      std::string* pError) {
+  if ((pInput.size() % BLOCK_GRANULARITY) != 0) {
+    SetError(pError, pName + " failed in " + pBucket + " at case " +
+                         std::to_string(pCaseIndex) +
+                         ": input length is not a multiple of 192");
+    return false;
+  }
+  for (CryptMode aMode : GetAvailableCryptModes()) {
+    std::unique_ptr<Crypt> aCipher =
+        pFactory(pInput.size(), pCaseIndex, aMode);
+    if (!aCipher) {
+      SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
+                          " failed in " + pBucket + " at case " +
+                          std::to_string(pCaseIndex) + ": null cipher");
+      return false;
+    }
+
+    std::vector<unsigned char> aEncrypted(pInput.size());
+    std::vector<unsigned char> aRoundTrip(pInput.size());
+    std::vector<unsigned char> aWorker(pInput.size());
+    unsigned char aInputDummy = 0;
+    unsigned char aWorkerDummy = 0;
+    unsigned char aEncryptedDummy = 0;
+    unsigned char aRoundTripDummy = 0;
+
+    std::string aCipherError;
+    if (!aCipher->SealData(ReadPtr(pInput, &aInputDummy),
+                           WritePtr(aWorker, &aWorkerDummy),
+                           WritePtr(aEncrypted, &aEncryptedDummy),
+                           pInput.size(), &aCipherError, aMode)) {
+      SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
+                          " failed in " + pBucket + " at case " +
+                          std::to_string(pCaseIndex) + " during encrypt" +
+                          (aCipherError.empty() ? "" : ": " + aCipherError));
+      return false;
+    }
+
+    aCipherError.clear();
+    if (!aCipher->UnsealData(ReadPtr(aEncrypted, &aEncryptedDummy),
+                             WritePtr(aWorker, &aWorkerDummy),
+                             WritePtr(aRoundTrip, &aRoundTripDummy),
+                             aEncrypted.size(), &aCipherError, aMode)) {
+      SetError(pError, pName + " mode=" + GetCryptModeName(aMode) +
+                          " failed in " + pBucket + " at case " +
+                          std::to_string(pCaseIndex) + " during decrypt" +
+                          (aCipherError.empty() ? "" : ": " + aCipherError));
+      return false;
+    }
+
+    if (aRoundTrip != pInput) {
+      const std::size_t aMismatchIndex = FirstMismatch(pInput, aRoundTrip);
+      SetError(pError, FormatFailure(pName, aMode, pBucket, pCaseIndex, pInput,
+                                     aEncrypted, aRoundTrip, aMismatchIndex));
+      return false;
+    }
+  }
+
+  return true;
+}
+
 bool RunRoundTripCase(const BlockCipherFactory& pFactory,
                       int pBlockSize,
                       const std::string& pName,
@@ -177,7 +242,7 @@ bool RunRoundTripCase(const BlockCipherFactory& pFactory,
                       std::size_t pCaseIndex,
                       const std::vector<unsigned char>& pInput,
                       std::string* pError) {
-  if ((pInput.size() % SB_CIPHER_LENGTH_GRANULARITY) != 0) {
+  if ((pInput.size() % BLOCK_GRANULARITY) != 0) {
     SetError(pError, pName + " block_size=" + std::to_string(pBlockSize) +
                          " failed in " + pBucket + " at case " +
                          std::to_string(pCaseIndex) +
@@ -264,6 +329,30 @@ bool RunFlatBucket(const CipherFactory& pFactory,
   return true;
 }
 
+bool RunFlatBucket(const SizedCipherFactory& pFactory,
+                   const std::string& pName,
+                   const std::string& pBucket,
+                   std::size_t pCaseCount,
+                   std::size_t pMinLength,
+                   std::size_t pMaxLength,
+                   std::string* pError) {
+  for (std::size_t aCaseIndex = 0; aCaseIndex < pCaseCount; ++aCaseIndex) {
+    if (HasError(pError)) {
+      return false;
+    }
+    const std::size_t aRange = pMaxLength - pMinLength + 1;
+    const std::size_t aLength =
+        TestBrewGenerator::NormalizeLength(pMinLength + (aCaseIndex % aRange));
+    const std::vector<unsigned char> aInput =
+        TestBrewGenerator::GenerateBytes(aLength);
+    if (!RunRoundTripCase(pFactory, pName, pBucket, aCaseIndex, aInput,
+                          pError)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 bool RunBlockBucket(const BlockCipherFactory& pFactory,
                     int pBlockSize,
                     const std::string& pName,
@@ -311,6 +400,22 @@ void ExecuteTestBrew_Flat(const CipherFactory& pFactory,
   RunFlatBucket(pFactory, pName, "Large", 50, 4224, 8064, pError);
 }
 
+void ExecuteTestBrew_FlatSized(const SizedCipherFactory& pFactory,
+                               const std::string& pName,
+                               std::string* pError) {
+  if (!pFactory) {
+    SetError(pError, pName + ": factory must not be empty");
+    return;
+  }
+  if (!RunFlatBucket(pFactory, pName, "1000_small_random", 1000, 0, 16, pError) ||
+      !RunFlatBucket(pFactory, pName, "250_medium_random", 250, 16, 4096,
+                     pError) ||
+      !RunFlatBucket(pFactory, pName, "50_large_random", 50, 4096, 8192,
+                     pError)) {
+    return;
+  }
+}
+
 void ExecuteTestBrew_Block(const BlockCipherFactory& pFactory,
                            int pBlockSize,
                            const std::string& pName,
@@ -326,4 +431,4 @@ void ExecuteTestBrew_Block(const BlockCipherFactory& pFactory,
                  pError);
 }
 
-}  // namespace jelly
+}  // namespace peanutbutter

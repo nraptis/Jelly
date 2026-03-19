@@ -3,7 +3,7 @@
 #include <cstdint>
 #include <random>
 
-namespace jelly {
+namespace peanutbutter {
 
 namespace {
 
@@ -22,7 +22,7 @@ unsigned char RandomByte() {
 
 std::vector<unsigned char> TestBrewGenerator::GenerateBytes(
     std::size_t pLength) {
-  if ((pLength % SB_CIPHER_LENGTH_GRANULARITY) != 0) {
+  if ((pLength % BLOCK_GRANULARITY) != 0) {
     return {};
   }
   std::vector<unsigned char> aResult(pLength);
@@ -46,13 +46,13 @@ std::vector<unsigned char> TestBrewGenerator::GenerateBytesBlock(
 
 std::size_t TestBrewGenerator::NormalizeLength(std::size_t pLength) {
   if (pLength == 0) {
-    return SB_CIPHER_LENGTH_GRANULARITY;
+    return BLOCK_GRANULARITY;
   }
-  const std::size_t aRemainder = pLength % SB_CIPHER_LENGTH_GRANULARITY;
+  const std::size_t aRemainder = pLength % BLOCK_GRANULARITY;
   if (aRemainder == 0) {
     return pLength;
   }
-  return pLength + (SB_CIPHER_LENGTH_GRANULARITY - aRemainder);
+  return pLength + (BLOCK_GRANULARITY - aRemainder);
 }
 
-}  // namespace jelly
+}  // namespace peanutbutter

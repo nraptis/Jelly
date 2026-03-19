@@ -1,11 +1,11 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Rotation/RotateCipher.hpp"
+#include "../src/Encryption/Ciphers/Rotation/RotateCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunFlatBenchmark(
+  return peanutbutter::benchmark::RunFlatBenchmark(
       "rotate",
-      [](std::size_t, jelly::CryptMode) {
-        return std::make_unique<jelly::RotateCipher>(-16);
+      [](std::size_t, peanutbutter::CryptMode) {
+        return std::make_unique<peanutbutter::RotateCipher>(-16);
       });
 }

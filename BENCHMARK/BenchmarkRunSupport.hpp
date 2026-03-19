@@ -8,9 +8,9 @@
 
 #include "BenchmarkBlockExecutor.hpp"
 #include "BenchmarkFlatExecutor.hpp"
-#include "../src/Jelly.hpp"
+#include "../src/PeanutButter.hpp"
 
-namespace jelly::benchmark {
+namespace peanutbutter::benchmark {
 
 inline std::string TimestampForLogs() {
   const std::time_t aNow = std::time(nullptr);
@@ -35,7 +35,19 @@ inline int RunFlatBenchmark(const std::string& pStem,
                             const CipherFactory& pFactory) {
   std::string aError;
   const std::string aPath = LogPathFor(pStem);
-  if (!BenchmarkFlat(pFactory, jelly::SB_L3_LENGTH, aPath, &aError)) {
+  if (!BenchmarkFlat(pFactory, BLOCK_SIZE_L3, aPath, &aError)) {
+    std::cerr << aError << "\n";
+    return 1;
+  }
+  std::cout << "PASS " << pStem << " -> " << aPath << "\n";
+  return 0;
+}
+
+inline int RunFlatBenchmark(const std::string& pStem,
+                            const SizedCipherFactory& pFactory) {
+  std::string aError;
+  const std::string aPath = LogPathFor(pStem);
+  if (!BenchmarkFlat(pFactory, BLOCK_SIZE_L3, aPath, &aError)) {
     std::cerr << aError << "\n";
     return 1;
   }
@@ -45,12 +57,12 @@ inline int RunFlatBenchmark(const std::string& pStem,
 
 template <typename tRun>
 int RunForEveryBlockSize(const std::string& pStemPrefix, tRun pRun) {
-  const int aBlockSizes[] = {static_cast<int>(jelly::EB_BLOCK_SIZE_08),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_12),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_16),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_24),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_32),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_48)};
+  const int aBlockSizes[] = {static_cast<int>(8),
+                             static_cast<int>(12),
+                             static_cast<int>(16),
+                             static_cast<int>(24),
+                             static_cast<int>(32),
+                             static_cast<int>(48)};
 
   for (int aBlockSize : aBlockSizes) {
     const std::string aStem =
@@ -67,7 +79,7 @@ inline int RunBlockBenchmark(const std::string& pStem,
                              const BlockCipherFactory& pFactory) {
   std::string aError;
   const std::string aPath = LogPathFor(pStem);
-  if (!BenchmarkBlock(pFactory, pBlockSize, jelly::SB_L3_LENGTH, aPath,
+  if (!BenchmarkBlock(pFactory, pBlockSize, BLOCK_SIZE_L3, aPath,
                       &aError)) {
     std::cerr << pStem << "\n" << aError << "\n";
     return 1;
@@ -76,6 +88,6 @@ inline int RunBlockBenchmark(const std::string& pStem,
   return 0;
 }
 
-}  // namespace jelly::benchmark
+}  // namespace peanutbutter::benchmark
 
 #endif  // JELLY_BENCHMARK_BENCHMARK_RUN_SUPPORT_HPP_

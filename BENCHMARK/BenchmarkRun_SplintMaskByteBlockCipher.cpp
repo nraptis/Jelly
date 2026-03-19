@@ -1,15 +1,15 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Splint/SplintMaskByteBlockCipher.hpp"
+#include "../src/Encryption/Ciphers/Splint/SplintMaskByteBlockCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunForEveryBlockSize(
+  return peanutbutter::benchmark::RunForEveryBlockSize(
       "splint_mask_byte_block",
       [](int pBlockSize, const std::string& pStem) {
-        return jelly::benchmark::RunBlockBenchmark(
+        return peanutbutter::benchmark::RunBlockBenchmark(
             pStem, pBlockSize,
-            [](int pInnerBlockSize, std::size_t, jelly::CryptMode) {
-              return std::make_unique<jelly::SplintMaskByteBlockCipher>(
+            [](int pInnerBlockSize, std::size_t, peanutbutter::CryptMode) {
+              return std::make_unique<peanutbutter::SplintMaskByteBlockCipher>(
                   pInnerBlockSize, 0xA3u);
             });
       });

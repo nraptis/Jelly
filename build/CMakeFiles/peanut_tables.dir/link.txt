@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpeanut_tables.a CMakeFiles/peanut_tables.dir/src/Tables/Tables.cpp.o
+/usr/bin/ranlib libpeanut_tables.a

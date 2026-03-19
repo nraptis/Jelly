@@ -72,47 +72,95 @@ include CMakeFiles/layered_crypt.dir/flags.make
 CMakeFiles/layered_crypt.dir/codegen:
 .PHONY : CMakeFiles/layered_crypt.dir/codegen
 
-CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
-CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Core/EncryptionLayer.cpp
-CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Core/EncryptionLayer.cpp"
+CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
+CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Encryption/Crypt.cpp
+CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/Crypt.cpp"
 
-CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Core/EncryptionLayer.cpp" > CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.i
+CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/Crypt.cpp" > CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.i
 
-CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Core/EncryptionLayer.cpp" -o CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.s
+CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/Crypt.cpp" -o CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.s
 
-CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
-CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Core/LayeredCrypt.cpp
-CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Core/LayeredCrypt.cpp"
+CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
+CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Encryption/EncryptionLayer.cpp
+CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/EncryptionLayer.cpp"
 
-CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Core/LayeredCrypt.cpp" > CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.i
+CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/EncryptionLayer.cpp" > CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.i
 
-CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Core/LayeredCrypt.cpp" -o CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.s
+CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/EncryptionLayer.cpp" -o CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.s
+
+CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
+CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Encryption/LayeredCrypt.cpp
+CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/LayeredCrypt.cpp"
+
+CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/LayeredCrypt.cpp" > CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.i
+
+CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/LayeredCrypt.cpp" -o CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.s
+
+CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
+CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Encryption/MaskLibrary.cpp
+CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/MaskLibrary.cpp"
+
+CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/MaskLibrary.cpp" > CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.i
+
+CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/MaskLibrary.cpp" -o CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.s
+
+CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o: CMakeFiles/layered_crypt.dir/flags.make
+CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o: /Users/magneto/Desktop/Codex\ Playground/Jelly/src/Encryption/PassthroughCrypt.cpp
+CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o: CMakeFiles/layered_crypt.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o -MF CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o.d -o CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o -c "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/PassthroughCrypt.cpp"
+
+CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/PassthroughCrypt.cpp" > CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.i
+
+CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/magneto/Desktop/Codex Playground/Jelly/src/Encryption/PassthroughCrypt.cpp" -o CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.s
 
 # Object files for target layered_crypt
 layered_crypt_OBJECTS = \
-"CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o" \
-"CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o"
+"CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o" \
+"CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o" \
+"CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o" \
+"CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o" \
+"CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o"
 
 # External object files for target layered_crypt
 layered_crypt_EXTERNAL_OBJECTS =
 
-liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Core/EncryptionLayer.cpp.o
-liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Core/LayeredCrypt.cpp.o
+liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Encryption/Crypt.cpp.o
+liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Encryption/EncryptionLayer.cpp.o
+liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Encryption/LayeredCrypt.cpp.o
+liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Encryption/MaskLibrary.cpp.o
+liblayered_crypt.a: CMakeFiles/layered_crypt.dir/src/Encryption/PassthroughCrypt.cpp.o
 liblayered_crypt.a: CMakeFiles/layered_crypt.dir/build.make
 liblayered_crypt.a: CMakeFiles/layered_crypt.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library liblayered_crypt.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/magneto/Desktop/Codex Playground/Jelly/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library liblayered_crypt.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/layered_crypt.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/layered_crypt.dir/link.txt --verbose=$(VERBOSE)
 

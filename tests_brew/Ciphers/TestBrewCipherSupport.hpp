@@ -6,9 +6,9 @@
 #include <iostream>
 #include <string>
 
-#include "../../src/Jelly.hpp"
+#include "../../src/PeanutButter.hpp"
 
-namespace jelly {
+namespace peanutbutter {
 namespace test_brew {
 
 inline int ReportFlatResult(const std::string& pCipherName,
@@ -47,12 +47,12 @@ inline int CaseStride(std::size_t pCaseIndex, std::uint32_t pSalt) {
 
 template <typename tRun>
 int RunForEveryBlockSize(const char* pCipherName, tRun pRun) {
-  const int aBlockSizes[] = {static_cast<int>(jelly::EB_BLOCK_SIZE_08),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_12),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_16),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_24),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_32),
-                             static_cast<int>(jelly::EB_BLOCK_SIZE_48)};
+  const int aBlockSizes[] = {static_cast<int>(8),
+                             static_cast<int>(12),
+                             static_cast<int>(16),
+                             static_cast<int>(24),
+                             static_cast<int>(32),
+                             static_cast<int>(48)};
 
   for (int aBlockSize : aBlockSizes) {
     std::string aError;
@@ -86,6 +86,6 @@ inline int ReportBlockResult(const std::string& pCipherName,
 }
 
 }  // namespace test_brew
-}  // namespace jelly
+}  // namespace peanutbutter
 
 #endif

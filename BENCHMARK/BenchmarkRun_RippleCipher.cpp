@@ -1,10 +1,10 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Ripple/RippleCipher.hpp"
+#include "../src/Encryption/Ciphers/Ripple/RippleCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunFlatBenchmark(
-      "ripple", [](std::size_t, jelly::CryptMode) {
-        return std::make_unique<jelly::RippleCipher>(4);
+  return peanutbutter::benchmark::RunFlatBenchmark(
+      "ripple", [](std::size_t, peanutbutter::CryptMode) {
+        return std::make_unique<peanutbutter::RippleCipher>(4);
       });
 }

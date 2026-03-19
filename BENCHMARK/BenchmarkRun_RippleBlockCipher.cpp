@@ -1,14 +1,14 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Ripple/RippleBlockCipher.hpp"
+#include "../src/Encryption/Ciphers/Ripple/RippleBlockCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunForEveryBlockSize(
+  return peanutbutter::benchmark::RunForEveryBlockSize(
       "ripple_block", [](int pBlockSize, const std::string& pStem) {
-        return jelly::benchmark::RunBlockBenchmark(
+        return peanutbutter::benchmark::RunBlockBenchmark(
             pStem, pBlockSize,
-            [](int pInnerBlockSize, std::size_t, jelly::CryptMode) {
-              return std::make_unique<jelly::RippleBlockCipher>(pInnerBlockSize,
+            [](int pInnerBlockSize, std::size_t, peanutbutter::CryptMode) {
+              return std::make_unique<peanutbutter::RippleBlockCipher>(pInnerBlockSize,
                                                                 4);
             });
       });

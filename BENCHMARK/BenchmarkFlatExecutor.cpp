@@ -16,9 +16,9 @@
 
 #include <unistd.h>
 
-#include "../src/Jelly.hpp"
+#include "../src/PeanutButter.hpp"
 
-namespace jelly::benchmark {
+namespace peanutbutter::benchmark {
 
 namespace {
 
@@ -130,6 +130,57 @@ bool TimeMode(const CipherFactory& pFactory,
   aTimes.reserve(RUN_COUNT);
 
   std::unique_ptr<Crypt> aCipher = pFactory(0, pMode);
+  if (!aCipher) {
+    SetError(pError,
+             std::string("cipher factory returned null for mode ") +
+                 GetCryptModeName(pMode));
+    return false;
+  }
+
+  for (int aRun = 0; aRun < RUN_COUNT; ++aRun) {
+    const auto aStart = std::chrono::steady_clock::now();
+    std::string aCipherError;
+    if (!aCipher->SealData(pBuffers.mSource, pBuffers.mWorker,
+                           pBuffers.mDestination, pDataLength,
+                           &aCipherError, pMode)) {
+      SetError(pError,
+               std::string("SealData failed for mode ") +
+                   GetCryptModeName(pMode) +
+                   (aCipherError.empty() ? "" : ": " + aCipherError));
+      return false;
+    }
+    const auto aEnd = std::chrono::steady_clock::now();
+    const std::chrono::duration<double, std::micro> aElapsed = aEnd - aStart;
+    aTimes.push_back(aElapsed.count());
+  }
+
+  if (aTimes.size() <= static_cast<std::size_t>(DISCARD_LO + DISCARD_HI)) {
+    SetError(pError, "not enough benchmark samples after trimming");
+    return false;
+  }
+
+  std::sort(aTimes.begin(), aTimes.end());
+  const auto aBegin = aTimes.begin() + DISCARD_LO;
+  const auto aEnd = aTimes.end() - DISCARD_HI;
+  const double aSum = std::accumulate(aBegin, aEnd, 0.0);
+  pAverageUs = aSum / static_cast<double>(aEnd - aBegin);
+  pGiBPerSecond =
+      static_cast<double>(pDataLength) / (pAverageUs / 1000000.0) /
+      (1024.0 * 1024.0 * 1024.0);
+  return true;
+}
+
+bool TimeMode(const SizedCipherFactory& pFactory,
+              const BufferPair& pBuffers,
+              std::size_t pDataLength,
+              CryptMode pMode,
+              double& pAverageUs,
+              double& pGiBPerSecond,
+              std::string* pError) {
+  std::vector<double> aTimes;
+  aTimes.reserve(RUN_COUNT);
+
+  std::unique_ptr<Crypt> aCipher = pFactory(pDataLength, 0, pMode);
   if (!aCipher) {
     SetError(pError,
              std::string("cipher factory returned null for mode ") +
@@ -372,28 +423,28 @@ bool BenchmarkFlat(const CipherFactory& pFactory,
     SetError(pError, "pFactory must not be empty");
     return false;
   }
-  if ((pDataLength % SB_CIPHER_LENGTH_GRANULARITY) != 0) {
+  if ((pDataLength % BLOCK_GRANULARITY) != 0) {
     SetError(pError, "pDataLength must be a multiple of 192");
     return false;
   }
 
   std::vector<SectionResult> aSections;
-  if (SB_L1_LENGTH <= pDataLength) {
+  if (BLOCK_SIZE_L1 <= pDataLength) {
     SectionResult aSection;
     aSection.mLabel = "L1 Blocks";
-    aSection.mDataLength = SB_L1_LENGTH;
+    aSection.mDataLength = BLOCK_SIZE_L1;
     aSections.push_back(std::move(aSection));
   }
-  if (SB_L2_LENGTH <= pDataLength) {
+  if (BLOCK_SIZE_L2 <= pDataLength) {
     SectionResult aSection;
     aSection.mLabel = "L2 Blocks";
-    aSection.mDataLength = SB_L2_LENGTH;
+    aSection.mDataLength = BLOCK_SIZE_L2;
     aSections.push_back(std::move(aSection));
   }
-  if (SB_L3_LENGTH <= pDataLength) {
+  if (BLOCK_SIZE_L3 <= pDataLength) {
     SectionResult aSection;
     aSection.mLabel = "L3 Blocks";
-    aSection.mDataLength = SB_L3_LENGTH;
+    aSection.mDataLength = BLOCK_SIZE_L3;
     aSections.push_back(std::move(aSection));
   }
   if (aSections.empty()) {
@@ -436,4 +487,79 @@ bool BenchmarkFlat(const CipherFactory& pFactory,
   return WriteReport(pOutputFile, aModes, aSections, pError);
 }
 
-}  // namespace jelly::benchmark
+bool BenchmarkFlat(const SizedCipherFactory& pFactory,
+                   std::size_t pDataLength,
+                   const std::string& pOutputFile,
+                   std::string* pError) {
+  if (pError != nullptr) {
+    pError->clear();
+  }
+  if (!pFactory) {
+    SetError(pError, "pFactory must not be empty");
+    return false;
+  }
+  if ((pDataLength % BLOCK_GRANULARITY) != 0) {
+    SetError(pError, "pDataLength must be a multiple of 192");
+    return false;
+  }
+
+  std::vector<SectionResult> aSections;
+  if (BLOCK_SIZE_L1 <= pDataLength) {
+    SectionResult aSection;
+    aSection.mLabel = "L1 Blocks";
+    aSection.mDataLength = BLOCK_SIZE_L1;
+    aSections.push_back(std::move(aSection));
+  }
+  if (BLOCK_SIZE_L2 <= pDataLength) {
+    SectionResult aSection;
+    aSection.mLabel = "L2 Blocks";
+    aSection.mDataLength = BLOCK_SIZE_L2;
+    aSections.push_back(std::move(aSection));
+  }
+  if (BLOCK_SIZE_L3 <= pDataLength) {
+    SectionResult aSection;
+    aSection.mLabel = "L3 Blocks";
+    aSection.mDataLength = BLOCK_SIZE_L3;
+    aSections.push_back(std::move(aSection));
+  }
+  if (aSections.empty()) {
+    SectionResult aSection;
+    aSection.mLabel = "Blocks";
+    aSection.mDataLength = pDataLength;
+    aSections.push_back(std::move(aSection));
+  }
+
+  const std::vector<CryptMode> aModes = GetAvailableCryptModes();
+  for (SectionResult& aSection : aSections) {
+    for (int aTrial = 0; aTrial < 2; ++aTrial) {
+      BufferPair aBuffers;
+      if (!AllocatePageAligned(aBuffers, aSection.mDataLength, pError)) {
+        return false;
+      }
+      FillRandom(aBuffers.mSource, aSection.mDataLength);
+      std::fill_n(aBuffers.mWorker, aBuffers.mAllocationLength, 0);
+      std::fill_n(aBuffers.mDestination, aBuffers.mAllocationLength, 0);
+
+      SectionResult::TrialResult aTrialResult;
+      aTrialResult.mAveragesUs.reserve(aModes.size());
+      aTrialResult.mGiBPerSecond.reserve(aModes.size());
+
+      for (CryptMode aMode : aModes) {
+        double aAverageUs = 0.0;
+        double aGiB = 0.0;
+        if (!TimeMode(pFactory, aBuffers, aSection.mDataLength, aMode,
+                      aAverageUs, aGiB, pError)) {
+          return false;
+        }
+        aTrialResult.mAveragesUs.push_back(aAverageUs);
+        aTrialResult.mGiBPerSecond.push_back(aGiB);
+      }
+
+      aSection.mTrials.push_back(std::move(aTrialResult));
+    }
+  }
+
+  return WriteReport(pOutputFile, aModes, aSections, pError);
+}
+
+}  // namespace peanutbutter::benchmark

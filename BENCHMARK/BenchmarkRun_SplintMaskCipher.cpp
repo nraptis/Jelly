@@ -1,11 +1,11 @@
 #include "BenchmarkRunSupport.hpp"
 
-#include "../src/Ciphers/Splint/SplintMaskCipher.hpp"
+#include "../src/Encryption/Ciphers/Splint/SplintMaskCipher.hpp"
 
 int main() {
-  return jelly::benchmark::RunFlatBenchmark(
+  return peanutbutter::benchmark::RunFlatBenchmark(
       "splint_mask",
-      [](std::size_t, jelly::CryptMode) {
-        return std::make_unique<jelly::SplintMaskCipher>(0xA3u);
+      [](std::size_t, peanutbutter::CryptMode) {
+        return std::make_unique<peanutbutter::SplintMaskCipher>(0xA3u);
       });
 }
